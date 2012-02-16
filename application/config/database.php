@@ -48,10 +48,10 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'localhost';
-$db['default']['username'] = '';
-$db['default']['password'] = '';
-$db['default']['database'] = '';
+$db['default']['hostname'] = 'atomicflowtech.com:3306';
+$db['default']['username'] = 'uvmcon5';
+$db['default']['password'] = 'aftech4d3d3d3';
+$db['default']['database'] = 'uvmcon5_Bogo';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
