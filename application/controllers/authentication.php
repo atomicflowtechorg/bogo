@@ -35,10 +35,14 @@ class Authentication extends CI_Controller {
         
         
         if ($this->form_validation->run() == FALSE) {
-            $this->load->view('authentication/consumer/register', $data);
+            $data['viewLocation'] = 'authentication/consumer/register';
+            $data['data'] = $data;
+            $this->load->view('dashboard/index',$data);
         } else {
             $consumer = $this->consumer->consumer_create();
-            $this->load->view('authentication/consumer/registerSuccess');
+            $data['viewLocation'] = 'authentication/consumer/registerSuccess';
+            $data['data'] = $data;
+            $this->load->view('dashboard/index',$data);
         }
     }
 
