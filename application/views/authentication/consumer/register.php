@@ -1,66 +1,41 @@
-<?php
-echo validation_errors();
-echo form_open(site_url('authentication/consumer_signup'));
+<html>
+<head>
+  <title>Consumer Sign Up</title>
+  <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="/assets/css/styles.css">
+  <script type="text/javascript" src="/assets/js/jquery-1.7.1.min.js"></script>
+  <script type="text/javascript" src="/assets/js/bootstrap.js"></script>
+</head>
+<body>
 
-$username = array(
-              'name'        => 'username',
-              'id'          => 'username',
-              'value'       => '',
-              'maxlength'   => '100',
-              'size'        => '50'
-            );
-echo form_label('Username:','username');
-echo form_input($username);
+<div class="container">
+  <div class="row">
+    <form method="post" action="<?php echo site_url('authentication/consumer_signup') ?>" class="form-horizontal well">
+      <fieldset>
+        <legend>Sign up for an account now!</legend>
+        <label>Desired Username</label>
+        <input type="text" class="span3" placeholder="Enter Here...">
+        <label>Choose a password</label>
+        <input type="text" class="span3" placeholder="Enter Here...">
+        <label>Confirm Password</label>
+        <input type="text" class="span3" placeholder="Enter Here...">
+        <label>First name</label>
+        <input type="text" class="span3" placeholder="Enter Here...">
+        <label>Last name</label>
+        <input type="text" class="span3" placeholder="Enter Here...">
+        <label>State name</label>
+        <input type="text" class="span3" placeholder="Enter Here...">
+        <label>City</label>
+        <input type="text" class="span3" placeholder="Enter Here...">
 
-$password = array(
-              'name'        => 'password',
-              'id'          => 'password',
-              'value'       => '',
-              'maxlength'   => '100',
-              'size'        => '50'
-            );
-echo form_label('Password:','password');
-echo form_password($password);
+      </fieldset>
+      <button type="submit" class="btn">Submit</button>
+    </form>
+  </div>
+  <!-- end row -->
 
-$passwordConfirm = array(
-              'name'        => 'passwordConfirm',
-              'id'          => 'passwordConfirm',
-              'value'       => '',
-              'maxlength'   => '100',
-              'size'        => '50'
-            );
-echo form_label('Confirm Password:','passwordConfirm');
-echo form_password($passwordConfirm);
+</div>
+<!-- end container -->
 
-$firstname = array(
-              'name'        => 'firstname',
-              'id'          => 'firstname',
-              'value'       => '',
-              'maxlength'   => '100',
-              'size'        => '50'
-            );
-echo form_label('First Name:','firstname');
-echo form_input($firstname);
-
-$lastname = array(
-              'name'        => 'lastmame',
-              'id'          => 'lastname',
-              'value'       => '',
-              'maxlength'   => '100',
-              'size'        => '50'
-            );
-echo form_label('Last Name:','lastname');
-echo form_input($lastname);
-
-$default = $states[0];
-
-echo form_dropdown('states', $states , $default);
-
-$defaultCity = $cities[0];
-
-echo form_dropdown('cities', $cities , $defaultCity);
-
-echo form_reset('reset','Reset');
-echo form_submit('submit','Submit');
-echo form_close();
-?>
+</body>
+</html>
