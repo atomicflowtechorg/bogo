@@ -52,21 +52,11 @@ $lastname = array(
 echo form_label('Last Name:','lastname');
 echo form_input($lastname);
 
-$states = array(
-                  'VT'  => 'VT',
-                  'DC'    => 'DC',
-                  'NY'   => 'NY'
-                );
-$default = 'VT';
+$default = $states[0];
 
 echo form_dropdown('states', $states , $default);
 
-$cities = array(
-                  'BTV'  => 'Burlington',
-                  'DC'    => 'Washnington DC',
-                  'NYC'   => 'New York City'
-                );
-$defaultCity = 'BTV';
+$defaultCity = $cities[0];
 
 echo form_dropdown('cities', $cities , $defaultCity);
 
