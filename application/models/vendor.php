@@ -63,10 +63,15 @@ class vendor extends CI_Model{
         $queryString = "SELECT fldCity FROM tblVendor WHERE fldState = '$state'";
         $query = $this->db->query($queryString);
         $cities = array();
-        foreach($query->result()  as $city){
-            array_push($cities, $city->fldCity);
+        if($query->num_rows() == 1){
+            foreach($query->result()  as $city){
+                array_push($cities, $city->fldCity);
+            }
+            return $cities;
         }
-        return $cities;
+        else{
+            return array("");
+        }
     }
     
     function get_all_vendors(){
