@@ -25,7 +25,6 @@
                             <a href="#">Offers</a>
                         </li>
                         <li><a href="#">Account</a></li>
-                        li
                     </ul>
                 </div>
             </div>

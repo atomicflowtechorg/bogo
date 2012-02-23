@@ -1,6 +1,6 @@
 <div class="row">
     <?php echo validation_errors(); ?>
-    <form method="post" action="<?php echo site_url('authentication/consumer_signup') ?>" class="form-horizontal well">
+    <form method="post" action="<?php echo site_url('signup') ?>" class="form-horizontal well">
         <fieldset>
             <legend>Sign up for an account now!</legend>
 
@@ -8,16 +8,19 @@
             <input type="text" id="username" name="username" class="span3" placeholder="Username..."/>
 
             <label>Choose a password</label>
-            <input type="text" id="password" name="password" class="span3" placeholder="Password..."/>
+            <input type="password" id="password" name="password" class="span3" placeholder="Password..."/>
 
             <label>Confirm Password</label>
-            <input type="text" id="passwordConfirm" name="passwordConfirm" class="span3" placeholder="Confirm Password..."/>
+            <input type="password" id="passwordConfirm" name="passwordConfirm" class="span3" placeholder="Confirm Password..."/>
 
             <label>First name</label>
-            <input type="text" id="firstname" name="firstName" class="span3" placeholder="First name..."/>
+            <input type="text" id="firstName" name="firstName" class="span3" placeholder="First name..."/>
 
             <label>Last name</label>
-            <input type="text" id="lastname" name="lastName" class="span3" placeholder="Last Name..."/>
+            <input type="text" id="lastName" name="lastName" class="span3" placeholder="Last Name..."/>
+            
+            <label>Email</label>
+            <input type="text" id="email" name="email" class="span3" placeholder="Email..."/>
 
             <label>State name</label>
             <input type="text" id="state" name="state" class="span3" placeholder="State..."/>

@@ -39,7 +39,8 @@
 */
 
 $route['default_controller'] = "dashboard";
-$route['signup'] = 'authentication/consumer_signup';
+$route['signup'] = 'authentication/signup_consumer';
+$route['signin'] = 'authentication/signin_consumer';
 $route['404_override'] = '';
 
 
