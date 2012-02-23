@@ -6,6 +6,7 @@
         <link rel="stylesheet" type="text/css" href="/assets/css/styles.css">
         <script type="text/javascript" src="/assets/js/jquery-1.7.1.min.js"></script>
         <script type="text/javascript" src="/assets/js/bootstrap.js"></script>
+        <script type="text/javascript" src="/assets/js/starter.js"></script>
     </head>
     <body>
 
