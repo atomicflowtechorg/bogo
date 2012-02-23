@@ -23,10 +23,10 @@ class Dashboard extends CI_Controller {
        $data['vendors'] = $this->vendor->get_all_vendors();
        
        $data['currentVendor'] = $this->vendor->get_vendor($data['vendors'][0]->id);
-       
+
        $data['currentItem'] = $this->item->get_item($data['items'][0]->itemId);
        $data['viewLocation'] = 'dashboard/welcome';
-       $data['data'] = array("");
+       $data['data'] = $data;
        $this->load->view('dashboard/index',$data);
     }
 }

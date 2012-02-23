@@ -43,23 +43,21 @@ class consumer extends CI_Model {
 
             $this->db->trans_start();
             $this->db->query("INSERT INTO tblConsumer (pkUsername, fldPassword, fldFirstName, fldLastName, fldEmail ) VALUES ('$this->username','$this->password','$this->firstName','$this->lastName','$this->email')");
-            
+
             $locationResult = $this->db->query("SELECT DISTINCT pkLocationId FROM tblLocation WHERE fldState = '$this->state' AND fldCity = '$this->city'");
-            if($locationResult->num_rows() == 0){
+            if ($locationResult->num_rows() == 0) {
                 $this->db->query("INSERT INTO tblLocation (fldState, fldCity) VALUES ('$this->state','$this->city')");
                 $locationId = $this->db->insert_id();
                 $this->db->query("INSERT INTO tblConsumerLocation (fkUsername, fkLocationId) VALUES ('$this->username','$locationId')");
-            }
-            else if($locationResult->num_rows() > 1){
+            } else if ($locationResult->num_rows() > 1) {
                 throw new exception("Duplicate location");
-            }
-            else{//Just update consumerLocation if location exists
-                foreach($locationResult->result_array() as $row){
-                     $locationId = $row['pkLocationId'];
+            } else {//Just update consumerLocation if location exists
+                foreach ($locationResult->result_array() as $row) {
+                    $locationId = $row['pkLocationId'];
                 }
                 $this->db->query("INSERT INTO tblConsumerLocation (fkUsername, fkLocationId) VALUES ('$this->username','$locationId')");
             }
-            
+
             $this->db->trans_complete();
 
             if ($this->db->trans_status() === FALSE) {
@@ -67,9 +65,9 @@ class consumer extends CI_Model {
                 throw new exception("transaction fail");
             }
         } else {
-            echo "error!!!!";
+            throw new exception("this username: $this->username already exists");
         }
-        
+
         return $this;
     }
 
@@ -84,7 +82,7 @@ class consumer extends CI_Model {
         $queryString = "SELECT pkUsername, fldPassword, fldFirstName, fldLastName,fldEmail, fldCity, fldState FROM tblConsumer 
                         INNER JOIN tblConsumerLocation ON tblConsumer.pkUsername= tblConsumerLocation.fkUsername
                         INNER JOIN tblLocation ON tblLocation.pkLocationId = tblConsumerLocation.fkLocationId
-                        WHERE pkUsername = '$this->username'";
+                        WHERE pkUsername = '$this->username' AND fldPassword = '$this->password'";
         $query = $this->db->query($queryString);
         if ($query->num_rows() == 1) {
             $consumer = $query->row();
@@ -95,11 +93,24 @@ class consumer extends CI_Model {
             $this->email = $consumer->fldEmail;
             $this->city = $consumer->fldCity;
             $this->state = $consumer->fldState;
+            //TODO: set last logged in
+            //$this->lastLoggedIn = date();
+
+            //set session
+            $sessionData = array(
+                'username' => $this->username,
+                'firstname' => $this->firstName,
+                'email' => $this->email,
+                'logged_in' => TRUE
+            );
+
+            $this->session->set_userdata($sessionData);
+
             return $this;
         } else if ($query->num_rows() > 1) {
             throw new exception("Too many results");
         } else {
-            throw new Exception("No Users found");
+            throw new Exception("Username:$this->username or Password incorrect");
         }
     }
 

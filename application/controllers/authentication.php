@@ -26,8 +26,8 @@ class Authentication extends CI_Controller {
         $this->form_validation->set_rules('username', 'Username', 'trim|required|xss_clean');
         $this->form_validation->set_rules('password', 'Password', 'trim|required|matches[passwordConfirm]|md5');
         $this->form_validation->set_rules('passwordConfirm', 'Password Confirm', 'trim|required');
-        $this->form_validation->set_rules('firstName', 'First Name', 'trim|required|alpha|xss_clean');
-        $this->form_validation->set_rules('lastName', 'Last Name', 'trim|required|alpha|xss_clean');
+        $this->form_validation->set_rules('firstName', 'First Name', 'trim|required|xss_clean');
+        $this->form_validation->set_rules('lastName', 'Last Name', 'trim|required|xss_clean');
         $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|xss_clean');
         $this->form_validation->set_rules('state', 'State', 'trim|required|alpha|xss_clean');
         $this->form_validation->set_rules('city', 'City', 'trim|required|alpha|xss_clean');
@@ -37,14 +37,17 @@ class Authentication extends CI_Controller {
         //TODO: Get cities for states
         $data['cities'] = $this->vendor->get_vendor_cities_for_state($data['states'][0]);
 
-
-
         if ($this->form_validation->run() == FALSE) {
             $data['viewLocation'] = 'authentication/consumer/register';
             $data['data'] = $data;
             $this->load->view('dashboard/index', $data);
         } else {
-            $data['consumer'] = $this->consumer->create_consumer();
+            try {
+                $data['consumer'] = $this->consumer->create_consumer();
+            } catch (Exception $e) {
+                $data['exception'] = 'Caught exception: ' . $e->getMessage() . "\n";
+            }
+
             $data['viewLocation'] = 'authentication/consumer/registerSuccess';
             $data['data'] = $data;
             $this->load->view('dashboard/index', $data);
@@ -58,8 +61,8 @@ class Authentication extends CI_Controller {
 
         $this->load->model('consumer');
 
-        $this->form_validation->set_rules('username', 'Username', 'required');
-        $this->form_validation->set_rules('password', 'Password', 'required');
+        $this->form_validation->set_rules('username', 'Username', 'trim|required|xss_clean');
+        $this->form_validation->set_rules('password', 'Password', 'trim|required|md5');
 
         if ($this->form_validation->run() == FALSE) {
             $data['viewLocation'] = 'authentication/consumer/signin';
@@ -69,7 +72,7 @@ class Authentication extends CI_Controller {
             try {
                 $isAuthenticated = $this->consumer->signin_consumer();
             } catch (Exception $e) {
-                $data['exception'] = 'Caught exception: '. $e->getMessage(). "\n";
+                $data['exception'] = 'Caught exception: ' . $e->getMessage() . "\n";
             }
 
 
@@ -79,6 +82,14 @@ class Authentication extends CI_Controller {
             $data['data'] = $data;
             $this->load->view('dashboard/index', $data);
         }
+    }
+
+    public function signout_consumer() {
+        $this->session->unset_userdata('logged_in');
+
+        $data['viewLocation'] = 'authentication/consumer/signinSuccess';
+        $data['data'] = $data;
+        $this->load->view('dashboard/index', $data);
     }
 
 }

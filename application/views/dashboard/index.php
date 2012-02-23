@@ -1,3 +1,13 @@
+<?php
+$nav = array();
+$session = $this->session->all_userdata();
+if (!isset($session['logged_in']) || $session['logged_in'] == false) {
+    $nav['nav_account']= site_url('signin');
+} else {
+    $nav['nav_account']= site_url('signout');
+}
+?>
+
 <html>
     <head>
         <meta charset="utf-8">
@@ -24,7 +34,7 @@
                         <li>
                             <a href="#">Offers</a>
                         </li>
-                        <li><a href="#">Account</a></li>
+                        <li><a href="<?php echo $nav['nav_account']; ?>">Account</a></li>
                     </ul>
                 </div>
             </div>
@@ -34,7 +44,7 @@
             <?php
             $this->load->view($viewLocation, $data);
             ?>
-            
+
             <footer>
                 <p>&copy; BoGo 2012</p>
             </footer>

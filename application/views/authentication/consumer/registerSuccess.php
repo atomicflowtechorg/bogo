@@ -1,3 +1,10 @@
 <?php
-print_r($data['consumer']);
+if(isset($data['exception'])){
+    echo $data['exception'];
+}
+else{
+    echo "Success!";
+    print_r($data['consumer']);
+}
+
 ?>
