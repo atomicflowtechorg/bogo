@@ -12,10 +12,10 @@
         <div class="navbar navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container">
-                    <a href="#index" class="brand">BoGo</a>
+                    <a href="/" class="brand">BoGo</a>
                     <ul class="nav">
                         <li class="active">
-                            <a href="#">Home</a>
+                            <a href="/">Home</a>
                         </li>
                         <li>
                             <a href="#">Groups</a>

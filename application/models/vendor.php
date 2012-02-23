@@ -29,7 +29,10 @@ class vendor extends CI_Model{
     }
     
     function get_vendor($vendorId){
-        $queryString = "SELECT pkVendorId, fldName, fldStreetAddress, fldCity, fldState, fldZipCode FROM tblVendor WHERE pkVendorId = $vendorId";
+        $queryString = "SELECT pkVendorId, fldName, fldStreetAddress, fldCity, fldState, fldZipCode FROM tblVendor 
+                        INNER JOIN tblVendorLocation ON tblVendor.pkVendorId = tblVendorLocation.fkVendorId
+                        INNER JOIN tblLocation ON tblLocation.pkLocationId = tblVendorLocation.fkLocationId
+                        WHERE pkVendorId = $vendorId";
         $query = $this->db->query($queryString);
         if($query->num_rows() == 1){
             $vendor = $query->row();
@@ -60,7 +63,7 @@ class vendor extends CI_Model{
     }
     
     function get_vendor_cities_for_state($state){
-        $queryString = "SELECT fldCity FROM tblVendor WHERE fldState = '$state'";
+        $queryString = "SELECT fldCity FROM tblLocation WHERE fldState = '$state'";
         $query = $this->db->query($queryString);
         $cities = array();
         if($query->num_rows() == 1){
@@ -75,7 +78,10 @@ class vendor extends CI_Model{
     }
     
     function get_all_vendors(){
-        $queryString = "SELECT pkVendorId, fldName, fldStreetAddress, fldCity, fldState, fldZipCode FROM tblVendor";
+        $queryString = "SELECT pkVendorId, fldName, fldStreetAddress, fldCity, fldState, fldZipCode
+                        FROM tblVendor
+                        INNER JOIN tblVendorLocation ON tblVendor.pkVendorId = tblVendorLocation.fkVendorId
+                        INNER JOIN tblLocation ON tblLocation.pkLocationId = tblVendorLocation.fkLocationId";
         $query = $this->db->query($queryString);
         $vendors_all = array();
         foreach($query->result()  as $vendor){
