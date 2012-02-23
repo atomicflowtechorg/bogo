@@ -36,7 +36,7 @@
             ?>
             
             <footer>
-                <p>&copy; BoGo 2012</p>
+                <p>&copy; BoGo Group 2012</p>
             </footer>
         </div> <!-- /container -->
 
