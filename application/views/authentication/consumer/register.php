@@ -20,7 +20,7 @@
             <input type="text" id="lastname" name="lastName" class="span3" placeholder="Last Name..."/>
 
             <label>State name</label>
-            <input type="text" id="state" name="state" class="span3" placeholder="State..."/>
+            <input type="text" id="state" name="state" class="span3" data-provide="typeahead" placeholder="State..."/>
 
             <label>City</label>
             <input type="text" id="city" name="city" class="span3" placeholder="City..."/>

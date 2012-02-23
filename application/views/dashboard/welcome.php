@@ -2,7 +2,7 @@
 <div class="hero-unit">
     <h1>Welcome to BoGo!</h1>
     <p>BoGo is an offer service that provides a fun and exciting experience for you the customer! We've created a unique system that puts the power of getting a great discount in your control. It's simple, the more people that you get to join you on a deal, the better a deal you'll get! Sound exciting?</p>
-    <p><a class="btn btn-primary btn-large">Get Started! &raquo;</a></p>
+    <p><a class="btn btn-primary btn-large" href="<?php echo site_url('signup'); ?>">Get Started! &raquo;</a></p>
 </div>
 
 <!-- Example row of columns -->
