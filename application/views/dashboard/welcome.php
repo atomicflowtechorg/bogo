@@ -10,7 +10,7 @@
     <div class="span4">
         <h2>Browse Offers</h2>
         <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-        <p><a class="btn" href="#">View Current Deals &raquo;</a></p>
+        <p><a class="btn" href="<?php echo site_url('deals'); ?>">View Current Deals &raquo;</a></p>
     </div>
     <div class="span4">
         <h2>Learn More</h2>

@@ -10,7 +10,7 @@
  *
  * @author lpaulger
  */
-class vendor extends CI_Model{
+class vendorModel extends CI_Model{
     
     var $id = '';
     var $name = '';
@@ -85,7 +85,7 @@ class vendor extends CI_Model{
         $query = $this->db->query($queryString);
         $vendors_all = array();
         foreach($query->result()  as $vendor){
-            $vendorObject = new vendor();
+            $vendorObject = new vendorModel();
             $vendorObject->id = $vendor->pkVendorId;
             $vendorObject->name = $vendor->fldName;
             $vendorObject->streetAddress = $vendor->fldStreetAddress;

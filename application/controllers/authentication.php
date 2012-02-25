@@ -22,7 +22,7 @@ class Authentication extends CI_Controller {
         $this->load->library('form_validation');
 
         $this->load->model('consumer');
-        $this->load->model('vendor');
+        $this->load->model('vendorModel');
         $this->form_validation->set_rules('username', 'Username', 'trim|required|xss_clean');
         $this->form_validation->set_rules('password', 'Password', 'trim|required|matches[passwordConfirm]|md5');
         $this->form_validation->set_rules('passwordConfirm', 'Password Confirm', 'trim|required');
@@ -35,7 +35,7 @@ class Authentication extends CI_Controller {
         $stateObject = json_decode($stringStates, true);
         $data['states'] = array_keys($stateObject);
         //TODO: Get cities for states
-        $data['cities'] = $this->vendor->get_vendor_cities_for_state($data['states'][0]);
+        $data['cities'] = $this->vendorModel->get_vendor_cities_for_state($data['states'][0]);
 
         if ($this->form_validation->run() == FALSE) {
             $data['viewLocation'] = 'authentication/consumer/register';

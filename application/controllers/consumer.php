@@ -10,27 +10,23 @@
  *
  * @author lpaulger
  */
-class Dashboard extends CI_Controller {
-
+class Consumer extends CI_Controller {
     public function index() {
-        $this->load->model('offer');
-        $this->load->model('vendorModel');
-        $this->load->model('item');
-
-        $data = array();
+       $this->load->model('offer');
+       $this->load->model('vendorModel');
+       $this->load->model('item');
+       
+       $data = array();
 //       $data['offers'] = $this->offer->offer_get_current();
-
-        try {
+       try {
             $data['items'] = $this->item->get_all_items();
             $data['vendors'] = $this->vendorModel->get_all_vendors();
             $data['currentVendor'] = $this->vendorModel->get_vendor($data['vendors'][0]->id);
         } catch (Exception $e) {
             $data['exception'] = 'Caught exception: ' . $e->getMessage() . "\n";
         }
-
-        $data['viewLocation'] = 'dashboard/welcome';
-        $data['data'] = $data;
-        $this->load->view('dashboard/index', $data);
+       $data['viewLocation'] = 'consumer/currentDeals';
+       $data['data'] = $data;
+       $this->load->view('dashboard/index',$data);
     }
-
 }
