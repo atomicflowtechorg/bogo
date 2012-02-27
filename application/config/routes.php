@@ -44,6 +44,7 @@ $route['signin'] = 'authentication/signin_consumer';
 $route['signout'] = 'authentication/signout_consumer';
 
 $route['offers'] = 'consumer';
+$route['offers/(:num)'] = 'item/view_item/$1';
 $route['offers/create/(:num)'] = 'consumer/create_cohort/$1';
 
 $route['404_override'] = '';

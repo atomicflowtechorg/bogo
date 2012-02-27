@@ -15,13 +15,13 @@ class Dashboard extends CI_Controller {
     public function index() {
         $this->load->model('offer');
         $this->load->model('vendorModel');
-        $this->load->model('item');
+        $this->load->model('itemmodel');
 
         $data = array();
 //       $data['offers'] = $this->offer->offer_get_current();
 
         try {
-            $data['items'] = $this->item->get_all_items();
+            $data['items'] = $this->itemmodel->get_all_items();
             $data['vendors'] = $this->vendorModel->get_all_vendors();
             $data['currentVendor'] = $this->vendorModel->get_vendor($data['vendors'][0]->id);
         } catch (Exception $e) {

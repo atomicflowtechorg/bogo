@@ -14,14 +14,14 @@ class Vendor extends CI_Controller {
 
     //Vendor dashboard
     public function index() {
-        $this->load->model('item');
+        $this->load->model('itemmodel');
         $this->load->model('vendorModel');
 
         //TODO: implement vendor login and session create
         $vendorId = 1;
 
         $data['vendor'] = $this->vendorModel->get_vendor($vendorId);
-        $data['items'] = $this->item->get_items_for_vendor($vendorId);
+        $data['items'] = $this->itemmodel->get_items_for_vendor($vendorId);
 
         $data['viewLocation'] = 'vendor/dashboard';
         $data['data'] = $data;
@@ -30,7 +30,7 @@ class Vendor extends CI_Controller {
 
     public function add_item() {
 
-        $this->load->model('item');
+        $this->load->model('itemmodel');
 
         $this->load->helper(array('form', 'file'));
 
@@ -49,8 +49,8 @@ class Vendor extends CI_Controller {
             $data['data'] = $data;
             $this->load->view('dashboard/index', $data);
         } else {
-            $data['item'] = $this->item->add_item();
-            $data['items'] = $this->item->get_items_for_vendor($vendorId);
+            $data['item'] = $this->itemmodel->add_item();
+            $data['items'] = $this->itemmodel->get_items_for_vendor($vendorId);
             $data['viewLocation'] = 'vendor/addItemSuccess';
             $data['data'] = $data;
             $this->load->view('dashboard/index', $data);
@@ -58,19 +58,19 @@ class Vendor extends CI_Controller {
     }
 
     public function enable_item($itemId) {
-        $this->load->model('item');
-        $this->item->enable_item($itemId);
+        $this->load->model('itemmodel');
+        $this->itemmodel->enable_item($itemId);
         
         //TODO: implement vendor login and session create
         $vendorId = 1;
-        $data['items'] = $this->item->get_items_for_vendor($vendorId);
+        $data['items'] = $this->itemmodel->get_items_for_vendor($vendorId);
         
         redirect('/vendor/', 'location');
     }
 
     public function disable_item($itemId) {
-        $this->load->model('item');
-        $this->item->disable_item($itemId);
+        $this->load->model('itemmodel');
+        $this->itemmodel->disable_item($itemId);
         
         redirect('/vendor/', 'location');
     }

@@ -10,7 +10,7 @@
  *
  * @author lpaulger
  */
-class item extends CI_Model {
+class itemModel extends CI_Model {
 
     var $itemId = '';
     var $name = '';
