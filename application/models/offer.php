@@ -17,7 +17,7 @@ class offer extends CI_Model {
         parent::__construct();
     }
     
-    function offer_get_current(){
+    function get_current_offers(){
         throw new exception('not implemented');
     }
 }

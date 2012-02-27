@@ -18,7 +18,7 @@ else{
         ?>
         <li>
             <div class="vendor-item">
-                <h3><?php echo $item->name; ?></h3>
+                <h3><a href="<?php echo site_url('offers/create/'. $item->itemId); ?>"><?php echo $item->name; ?></a></h3>
                 <span><?php echo $item->initPrice . ' ' . $item->basePrice; ?></span>
                 <span><?php echo $item->totalQty . ' ' . $item->currentQty; ?></span>
             </div>

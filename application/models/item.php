@@ -20,6 +20,7 @@ class item extends CI_Model {
     var $totalQty = '';
     var $currentQty = '';
     var $enabled = '';
+    var $userInCohort = false;
     var $vendorId = '';
 
     function __construct() {
@@ -28,7 +29,13 @@ class item extends CI_Model {
     }
 
     function get_all_items() {
-        $queryString = "SELECT pkItemId, fldName, fldInitialPrice, fldBasePrice, fldRateDecrease, fldTotalQty, fldCurrentQty, fldEnabled, fkVendorId FROM tblItem WHERE fldEnabled = 1";
+        $queryString = "SELECT pkItemId, fldName, fldInitialPrice, fldBasePrice, fldRateDecrease, fldTotalQty, fldCurrentQty, fldEnabled, fkVendorId ,tblConsumerCohort.fkCohortId
+                        FROM tblItem
+                        LEFT JOIN tblItemCohort 
+                        ON tblItemCohort.fkItemId = pkItemId
+                        LEFT JOIN tblConsumerCohort
+                        ON tblConsumerCohort.fkCohortId = tblItemCohort.fkCohortId
+                        WHERE fldEnabled = 1";
         $query = $this->db->query($queryString);
         $items_all = array();
         foreach ($query->result() as $item) {
@@ -42,6 +49,7 @@ class item extends CI_Model {
             $itemObject->currentQty = $item->fldCurrentQty;
             $itemObject->enabled = $item->fldEnabled;
             $itemObject->vendorId = $item->fkVendorId;
+            $itemObject->cohortId = $item->fkCohortId;
             array_push($items_all, $itemObject);
         }
         if(count($items_all) > 0){

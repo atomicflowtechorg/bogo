@@ -32,7 +32,7 @@ if (!isset($session['logged_in']) || $session['logged_in'] == false) {
                             <a href="#">Groups</a>
                         </li>
                         <li>
-                            <a href="#">Offers</a>
+                            <a href="<?php echo site_url('offers'); ?>">Offers</a>
                         </li>
                         <li><a href="<?php echo $nav['nav_account']; ?>">Account</a></li>
                     </ul>
