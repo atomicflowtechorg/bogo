@@ -29,13 +29,12 @@ class item extends CI_Model {
     }
 
     function get_all_items() {
-        $queryString = "SELECT pkItemId, fldName, fldInitialPrice, fldBasePrice, fldRateDecrease, fldTotalQty, fldCurrentQty, fldEnabled, fkVendorId ,tblConsumerCohort.fkCohortId
+        $queryString = "SELECT pkItemId, fldName, fldInitialPrice, fldBasePrice, fldRateDecrease, fldTotalQty, fldCurrentQty, fldEnabled, fkVendorId
                         FROM tblItem
-                        LEFT JOIN tblItemCohort 
-                        ON tblItemCohort.fkItemId = pkItemId
-                        LEFT JOIN tblConsumerCohort
-                        ON tblConsumerCohort.fkCohortId = tblItemCohort.fkCohortId
                         WHERE fldEnabled = 1";
+                        
+        
+
         $query = $this->db->query($queryString);
         $items_all = array();
         foreach ($query->result() as $item) {
@@ -49,13 +48,11 @@ class item extends CI_Model {
             $itemObject->currentQty = $item->fldCurrentQty;
             $itemObject->enabled = $item->fldEnabled;
             $itemObject->vendorId = $item->fkVendorId;
-            $itemObject->cohortId = $item->fkCohortId;
             array_push($items_all, $itemObject);
         }
-        if(count($items_all) > 0){
-           return $items_all; 
-        }
-        else{
+        if (count($items_all) > 0) {
+            return $items_all;
+        } else {
             throw new exception('no available items');
         }
     }
@@ -105,13 +102,13 @@ class item extends CI_Model {
     function update_item_current_qty($itemId) {
         throw new Exception("Not Implemented");
     }
-    
-    function enable_item($itemId){
+
+    function enable_item($itemId) {
         $queryString = "UPDATE tblItem SET fldEnabled = 1 WHERE pkItemId = $itemId";
         $query = $this->db->query($queryString);
     }
-    
-    function disable_item($itemId){
+
+    function disable_item($itemId) {
         $queryString = "UPDATE tblItem SET fldEnabled = 0 WHERE pkItemId = $itemId";
         $query = $this->db->query($queryString);
     }
@@ -126,7 +123,7 @@ class item extends CI_Model {
         $this->currentQty = $this->input->post('quantity');
         $this->enabled = 0;
         $this->vendorId = $vendorId;
-        
+
         $queryString = "INSERT INTO tblItem (fldName, fldInitialPrice, fldBasePrice, fldRateDecrease, fldTotalQty, fldCurrentQty, fkVendorId) VALUES ('$this->name', $this->initPrice, $this->basePrice, $this->rateDecrease, $this->totalQty, $this->currentQty, $this->vendorId)";
         $query = $this->db->query($queryString);
         $this->itemId = $this->db->insert_id();

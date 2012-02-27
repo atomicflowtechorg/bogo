@@ -15,10 +15,12 @@ class Consumer extends CI_Controller {
     public function index() {
         $this->load->model('vendorModel');
         $this->load->model('item');
-
+        $this->load->model('offer');
+        
         $data = array();
         try {
-            $data['items'] = $this->item->get_all_items();
+            //$data['items'] = $this->item->get_all_items();
+            $data['offers'] = $this->offer->get_all_offers();
             $data['vendors'] = $this->vendorModel->get_all_vendors();
             $data['currentVendor'] = $this->vendorModel->get_vendor($data['vendors'][0]->id);
         } catch (Exception $e) {
