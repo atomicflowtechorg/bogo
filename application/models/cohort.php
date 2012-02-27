@@ -29,8 +29,8 @@ class cohort extends CI_Model {
         $username = $session['username'];
         $date = new DateTime();
         $date->add(new DateInterval('P1D'));
-        $date->setTimezone( new DateTimeZone('America/New_York'));
-        
+        $date->setTimezone(new DateTimeZone('America/New_York'));
+
         $this->experation = $date->format('Y-m-d H:m:s');
         $this->db->trans_start();
         //check item has 5 qty remaining (always reserved 5 qty for a new cohort
@@ -46,7 +46,7 @@ class cohort extends CI_Model {
         $totalQty = $qtyResult->row()->fldTotalQty;
         $currentCohorts = $cohortCountResult->row()->Count;
         $exists = $cohortExistsQuery->row()->cohortExists;
-        
+
         //If no room for another cohort, OR user and cohort relation already exist
         if ($currentCohorts > 0 && ($totalQty / $currentCohorts) < 5 || $exists > 0) {
             throw new Exception('not enough items for new cohort OR user already in a cohort for this item');
@@ -62,8 +62,27 @@ class cohort extends CI_Model {
 
         return $this;
     }
-    
-    function get_cohorts_for_item($itemId){
+
+    function join_cohort($cohortId) {
+        $session = $this->session->all_userdata();
+        $username = $session['username'];
+        
+        //check size
+        $checkSize = $this->db->query("SELECT COUNT(*) AS size  FROM tblConsumerCohort WHERE fkCohortId = $cohortId");
+        $currentSize = $checkSize->row()->size;
+        // if less than 5, insert into consumer cohort
+        if ($currentSize < 5) {
+            $this->db->trans_start();
+            
+            $query = $this->db->query("INSERT INTO tblConsumerCohort VALUES ('$username',$cohortId)");
+            
+            $this->db->trans_complete();
+        } else {
+            throw new Exception('Cohort at Max size');
+        }
+    }
+
+    function get_cohorts_for_item($itemId) {
         $queryString = "SELECT pkCohortId,fkItemId, fldExperation FROM tblItemCohort
                         INNER JOIN tblCohort ON
                         tblItemCohort.fkCohortId = tblCohort.pkCohortId
@@ -79,4 +98,5 @@ class cohort extends CI_Model {
         }
         return $cohorts;
     }
+
 }

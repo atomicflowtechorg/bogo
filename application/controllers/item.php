@@ -25,7 +25,20 @@ class Item extends CI_Controller {
             $data['exception'] = 'Caught exception: ' . $e->getMessage() . "\n";
         }
         
-        $data['viewLocation'] = 'item/details';
+        $data['viewLocation'] = 'template/item/details';
+        $data['data'] = $data;
+        $this->load->view('dashboard/index', $data);
+    }
+    
+    public function join_cohort($cohortId){
+        $this->load->model('cohort');      
+        try {
+            $data['cohort'] = $this->cohort->join_cohort($cohortId);
+        } catch (Exception $e) {
+            $data['exception'] = 'Caught exception: ' . $e->getMessage() . "\n";
+        }
+        
+        $data['viewLocation'] = 'template/cohort/join';
         $data['data'] = $data;
         $this->load->view('dashboard/index', $data);
     }
