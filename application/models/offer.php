@@ -14,12 +14,12 @@ class offer extends CI_Model {
 
     var $cohorts;
     var $item;
-
     function __construct() {
         // Call the Model constructor
         parent::__construct();
+        $this->load->model('itemmodel');
         $this->cohorts = array();
-        $this->item = new item();
+        $this->item = new itemModel();
     }
 
     function get_all_offers() {
@@ -51,7 +51,7 @@ class offer extends CI_Model {
         $query = $this->db->query($queryString);
         $items_all = array();
         foreach ($query->result() as $item) {
-            $itemObject = new item();
+            $itemObject = new itemModel();
             $itemObject->itemId = $item->pkItemId;
             $itemObject->name = $item->fldName;
             $itemObject->initPrice = $item->fldInitialPrice;
@@ -88,7 +88,7 @@ class offer extends CI_Model {
         $query = $this->db->query($queryString);
         $items_all = array();
         foreach ($query->result() as $item) {
-            $itemObject = new item();
+            $itemObject = new itemModel();
             $itemObject->itemId = $item->pkItemId;
             $itemObject->name = $item->fldName;
             $itemObject->initPrice = $item->fldInitialPrice;

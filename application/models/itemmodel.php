@@ -38,7 +38,7 @@ class itemModel extends CI_Model {
         $query = $this->db->query($queryString);
         $items_all = array();
         foreach ($query->result() as $item) {
-            $itemObject = new item();
+            $itemObject = new itemModel();
             $itemObject->itemId = $item->pkItemId;
             $itemObject->name = $item->fldName;
             $itemObject->initPrice = $item->fldInitialPrice;
@@ -84,7 +84,7 @@ class itemModel extends CI_Model {
         $query = $this->db->query($queryString);
         $vendor_items = array();
         foreach ($query->result() as $item) {
-            $itemObject = new item();
+            $itemObject = new itemModel();
             $itemObject->itemId = $item->pkItemId;
             $itemObject->name = $item->fldName;
             $itemObject->initPrice = $item->fldInitialPrice;
