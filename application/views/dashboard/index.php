@@ -14,11 +14,8 @@ if (!isset($session['logged_in']) || $session['logged_in'] == false) {
         <title>Consumer Home</title>
         <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.css">
         <link rel="stylesheet" type="text/css" href="/assets/css/styles.css">
-        <link rel="stylesheet" type="text/css" href="/assets/css/supersized.core.css">
-
         <script type="text/javascript" src="/assets/js/jquery-1.7.1.min.js"></script>
         <script type="text/javascript" src="/assets/js/bootstrap.js"></script>
-        <script type="text/javascript" src="/assets/js/supersized.core.3.2.1.min.js"></script>
         <script type="text/javascript" src="/assets/js/starter.js"></script>
     </head>
     <body>
@@ -35,7 +32,7 @@ if (!isset($session['logged_in']) || $session['logged_in'] == false) {
                             <a href="#">Groups</a>
                         </li>
                         <li>
-                            <a href="#">Offers</a>
+                            <a href="<?php echo site_url('offers'); ?>">Offers</a>
                         </li>
                         <li><a href="<?php echo $nav['nav_account']; ?>">Account</a></li>
                     </ul>
