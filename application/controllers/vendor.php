@@ -12,13 +12,15 @@
  */
 class Vendor extends CI_Controller {
 
+    var $vendorId = 1;
+
     //Vendor dashboard
     public function index() {
         $this->load->model('itemmodel');
         $this->load->model('vendorModel');
 
         //TODO: implement vendor login and session create
-        $vendorId = 1;
+        $vendorId = $this->vendorId;
 
         $data['vendor'] = $this->vendorModel->get_vendor($vendorId);
         $data['items'] = $this->itemmodel->get_items_for_vendor($vendorId);
@@ -37,7 +39,7 @@ class Vendor extends CI_Controller {
         $this->load->library('form_validation');
 
         //TODO: implement vendor login and session create
-        $vendorId = 1;
+        $vendorId = $this->vendorId;
 
         $this->form_validation->set_rules('name', 'Name', 'trim|required|xss_clean');
         $this->form_validation->set_rules('initPrice', 'Initial Price', 'trim|required|xss_clean');
@@ -57,22 +59,32 @@ class Vendor extends CI_Controller {
         }
     }
 
-    public function enable_item($itemId) {
+    public function create_campaign() {
         $this->load->model('itemmodel');
-        $this->itemmodel->enable_item($itemId);
+        $this->load->model('offer');
         
-        //TODO: implement vendor login and session create
-        $vendorId = 1;
-        $data['items'] = $this->itemmodel->get_items_for_vendor($vendorId);
-        
-        redirect('/vendor/', 'location');
-    }
+        $this->load->helper(array('form', 'file'));
 
-    public function disable_item($itemId) {
-        $this->load->model('itemmodel');
-        $this->itemmodel->disable_item($itemId);
-        
-        redirect('/vendor/', 'location');
+        $this->load->library('form_validation');
+
+        //TODO: implement vendor login and session create
+        $vendorId = $this->vendorId;
+
+        $this->form_validation->set_rules('item', 'Item', 'trim|required|xss_clean');
+        $this->form_validation->set_rules('startDate', 'Start Date', 'trim|required|xss_clean');
+        $this->form_validation->set_rules('endDate', 'End Date', 'trim|required|xss_clean');
+
+        if ($this->form_validation->run() == FALSE) {
+            $data['viewLocation'] = 'vendor/campaign/create';
+            $data['data'] = $data;
+            $this->load->view('dashboard/index', $data);
+        } else {
+            
+            $data['campaign'] = $this->offer->create_campaign();
+            $data['viewLocation'] = 'vendor/campaign/createSuccess';
+            $data['data'] = $data;
+            $this->load->view('dashboard/index', $data);
+        }
     }
 
 }

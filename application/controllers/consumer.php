@@ -11,13 +11,17 @@
  * @author lpaulger
  */
 class Consumer extends CI_Controller {
-
+    
+    //View Current Deals
     public function index() {
         $this->load->model('vendorModel');
         $this->load->model('itemmodel');
         $this->load->model('offer');
         
         $data = array();
+        
+        
+        
         try {
             //$data['items'] = $this->itemmodel->get_all_items();
             $data['offers'] = $this->offer->get_all_offers();

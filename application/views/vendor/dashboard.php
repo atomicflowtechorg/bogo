@@ -7,15 +7,6 @@
 <ul>
     <?php
     foreach ($items as $item) {
-        $url = '';
-        $urlText = '';
-        if ($item->enabled == true) {
-                    $url = site_url('vendor/disable_item/' . $item->itemId);
-                    $urlText = 'disable';
-                } else {
-                    $url = site_url('vendor/enable_item/' . $item->itemId);
-                    $urlText = 'enable';
-                }
         
         ?>
         <li>
@@ -24,7 +15,7 @@
                 <span><?php echo $item->initPrice . ' ' . $item->basePrice; ?></span>
                 <span><?php echo $item->totalQty . ' ' . $item->currentQty; ?></span>
 
-                <a href="<?php echo $url;?>"><?php echo $urlText; ?></a>
+                <a href="<?php echo site_url('vendor/create/campaign');?>">Create Campaign</a>
             </div>
         </li>
         <?php

@@ -19,7 +19,6 @@ class itemModel extends CI_Model {
     var $rateDecrease = '';
     var $totalQty = '';
     var $currentQty = '';
-    var $enabled = '';
     var $userInCohort = false;
     var $vendorId = '';
 
@@ -29,9 +28,8 @@ class itemModel extends CI_Model {
     }
 
     function get_all_items() {
-        $queryString = "SELECT pkItemId, fldName, fldInitialPrice, fldBasePrice, fldRateDecrease, fldTotalQty, fldCurrentQty, fldEnabled, fkVendorId
-                        FROM tblItem
-                        WHERE fldEnabled = 1";
+        $queryString = "SELECT pkItemId, fldName, fldInitialPrice, fldBasePrice, fldRateDecrease, fldTotalQty, fldCurrentQty, fkVendorId
+                        FROM tblItem";
                         
         
 
@@ -46,7 +44,6 @@ class itemModel extends CI_Model {
             $itemObject->rateDecrease = $item->fldRateDecrease;
             $itemObject->totalQty = $item->fldTotalQty;
             $itemObject->currentQty = $item->fldCurrentQty;
-            $itemObject->enabled = $item->fldEnabled;
             $itemObject->vendorId = $item->fkVendorId;
             array_push($items_all, $itemObject);
         }
@@ -58,7 +55,7 @@ class itemModel extends CI_Model {
     }
 
     function get_item($itemId) {
-        $queryString = "SELECT pkItemId, fldName, fldInitialPrice, fldBasePrice, fldRateDecrease, fldTotalQty, fldCurrentQty, fldEnabled, fkVendorId FROM tblItem WHERE pkItemId=$itemId";
+        $queryString = "SELECT pkItemId, fldName, fldInitialPrice, fldBasePrice, fldRateDecrease, fldTotalQty, fldCurrentQty, fkVendorId FROM tblItem WHERE pkItemId=$itemId";
         $query = $this->db->query($queryString);
         if ($query->num_rows() == 1) {
             $item = $query->row();
@@ -69,7 +66,6 @@ class itemModel extends CI_Model {
             $this->rateDecrease = $item->fldRateDecrease;
             $this->totalQty = $item->fldTotalQty;
             $this->currentQty = $item->fldCurrentQty;
-            $this->enabled = $item->fldEnabled;
             $this->vendorId = $item->fkVendorId;
             return $this;
         } else if ($query->num_rows() > 1) {
@@ -80,7 +76,7 @@ class itemModel extends CI_Model {
     }
 
     function get_items_for_vendor($vendorId) {
-        $queryString = "SELECT pkItemId, fldName, fldInitialPrice, fldBasePrice, fldRateDecrease, fldTotalQty, fldCurrentQty, fldEnabled, fkVendorId FROM tblItem WHERE fkVendorId = $vendorId";
+        $queryString = "SELECT pkItemId, fldName, fldInitialPrice, fldBasePrice, fldRateDecrease, fldTotalQty, fldCurrentQty, fkVendorId FROM tblItem WHERE fkVendorId = $vendorId";
         $query = $this->db->query($queryString);
         $vendor_items = array();
         foreach ($query->result() as $item) {
@@ -92,7 +88,6 @@ class itemModel extends CI_Model {
             $itemObject->rateDecrease = $item->fldRateDecrease;
             $itemObject->totalQty = $item->fldTotalQty;
             $itemObject->currentQty = $item->fldCurrentQty;
-            $itemObject->enabled = $item->fldEnabled;
             $itemObject->vendorId = $item->fkVendorId;
             array_push($vendor_items, $itemObject);
         }
@@ -101,16 +96,6 @@ class itemModel extends CI_Model {
 
     function update_item_current_qty($itemId) {
         throw new Exception("Not Implemented");
-    }
-
-    function enable_item($itemId) {
-        $queryString = "UPDATE tblItem SET fldEnabled = 1 WHERE pkItemId = $itemId";
-        $query = $this->db->query($queryString);
-    }
-
-    function disable_item($itemId) {
-        $queryString = "UPDATE tblItem SET fldEnabled = 0 WHERE pkItemId = $itemId";
-        $query = $this->db->query($queryString);
     }
 
     function add_item() {
