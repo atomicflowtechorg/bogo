@@ -1,6 +1,6 @@
 <div class="row">
     <?php echo validation_errors(); ?>
-    <form method="post" action="<?php echo site_url('signin') ?>" class="form-horizontal well">
+    <form id="signinForm" method="post" action="<?php echo site_url('signin') ?>" class="form-horizontal well span3">
         <fieldset>
             <legend>Sign in!</legend>
             <label>Username</label>

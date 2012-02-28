@@ -1,5 +1,5 @@
 body{
-	padding-top:61px;
+	padding-top:150px;
 	padding-bottom: 40px;
 	background: url("/assets/image/background/subtle_freckles.png");
 }
@@ -11,3 +11,18 @@ margin-bottom: 50px;
 }
 
 
+#signinForm{
+	background-color: rgba(0, 0, 0, 0.8);
+	color: red;
+}
+
+legend{
+	color:#fff;
+}
+
+label{
+	color:#fff;
+	text-transform:uppercase;
+	font-size: 11px;
+	font-style:oblique;
+}
