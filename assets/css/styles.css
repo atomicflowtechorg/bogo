@@ -4,16 +4,31 @@ body{
 	background: url("/assets/image/background/subtle_freckles.png");
 }
 
-#TileContainer{
+/*#TileContainer{
 background-color: #FFF;
 height:2000px;
 margin-bottom: 50px;
-}
+}*/
 
 
 #signinForm{
 	background-color: rgba(0, 0, 0, 0.8);
-	color: red;
+	border-radius:0px;
+	height:225px;
+	margin-left: 0px;
+}
+#signinFormAside{
+	background-color:#000;
+	height:265px;
+
+}
+
+#signinFormBackground{
+	background: url(/assets/image/background/signinBackground.png);
+	position: relative;
+	height:100%;
+	padding-top:150px;
+	margin-top:-150px;
 }
 
 legend{
@@ -25,4 +40,21 @@ label{
 	text-transform:uppercase;
 	font-size: 11px;
 	font-style:oblique;
+}
+
+footer{
+	bottom:0px;
+}
+
+.navbar-inner{
+	background: #fff url("/assets/image/nav_bar.png");
+}
+
+legend{
+font-size: 30px;
+font-weight: bold;
+}
+
+form{
+
 }
