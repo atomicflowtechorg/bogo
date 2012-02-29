@@ -5,7 +5,7 @@
     <p><a class="btn btn-primary btn-large" href="<?php echo site_url('signup'); ?>">Get Started! &raquo;</a></p>
 </div>
 
-<!-- Example row of columns -->
+
 <div class="row">
     <div class="span4">
         <h2>Browse Offers</h2>

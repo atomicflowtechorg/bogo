@@ -1,3 +1,4 @@
+<!-- Consumer/Sigin -->
 <div class="row">
     <?php echo validation_errors(); ?>
     <div id="signinFormBackground" class="span">
@@ -5,7 +6,7 @@
         <div class="row" >
 
             <div class="span4" id="signinFormAside">
-               The Bogo Experience. We give you a chance to lower the price on items that you want by performing simple tasks. The better you do, the better the price you'll get!
+               GoodsDeed.com is a service that allows you to exchange helpful deeds for discounts on the items and services you love. 
             </div>
 
             <form id="signinForm" method="post" action="<?php echo site_url('signin') ?>" class="form-horizontal well span4">
