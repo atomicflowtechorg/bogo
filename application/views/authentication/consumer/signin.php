@@ -3,22 +3,35 @@
     <?php echo validation_errors(); ?>
     <div id="signinFormBackground" class="span">
 
-        <div class="row" >
+        <div class="row" id="signinRow">
 
-            <div class="span4" id="signinFormAside">
-               GoodsDeed.com is a service that allows you to exchange helpful deeds for discounts on the items and services you love. 
+            <div class="span4 well" id="signinFormAside">
+               <div class="message"><b>Karrrma</b> is a service that allows you to exchange <b>good deeds</b> for <b>great discounts</b> on the items and services you <span style="color:red; font-weight:bold;">love</span>.</div>
             </div>
 
-            <form id="signinForm" method="post" action="<?php echo site_url('signin') ?>" class="form-horizontal well span4">
-                <fieldset>
-                    <legend>Sign in!</legend>
-                    <label>Username</label>
-                    <input type="text" id="username" name="username" class="span3" placeholder="Enter Here..."/>
-                    <label>Password</label>
-                    <input type="password" id="password" name="password" class="span3" placeholder="Enter Here..."/>
-                </fieldset>
-                <button type="submit" class="btn">Login</button>
-            </form>
+            <div id="signinFormContainer" class="well span4">
+                <form id="signinForm" method="post" action="<?php echo site_url('signin') ?>" class="form-horizontal pull-left ">
+                    <fieldset>
+                        <legend>Member Sign In</legend>
+                        <div class="control-group">
+                            <label>Username</label>
+                            <input type="text" id="username" name="username" class="span3" placeholder="Enter Here..."/>
+                        </div>
+                
+                        <div class="control-group">
+                            <label>Password</label>
+                            <input type="password" id="password" name="password" class="span3" placeholder="Enter Here..."/>
+                        </div>
+                    </fieldset>
+                    <div class="control-group">
+                        <div class="row">
+                            <button type="submit" class="btn btn-primary span2">
+                                <i class="icon-user icon-white"></i>
+                                Login</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
 
             
         </div>

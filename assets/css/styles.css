@@ -1,6 +1,5 @@
 body{
 	padding-top:150px;
-	padding-bottom: 40px;
 	background: url("/assets/image/background/subtle_freckles.png");
 }
 
@@ -10,17 +9,36 @@ height:2000px;
 margin-bottom: 50px;
 }*/
 
-
-#signinForm{
+#signinFormContainer{
 	background-color: rgba(0, 0, 0, 0.8);
 	border-radius:0px;
-	height:325px;
+	/*height:325px;*/
 	margin-left: 0px;
+	height:100%;
+}
+#signinForm{
+	
 }
 #signinFormAside{
 	background-color:#000;
-	height:365px;
+	/*height:325px;*/
+	border-radius:0px;
+	color: #7D7D7D;
+	font-size:26px;
+	line-height: 30px;
+	height:100%;
+}
+#signinRow{
+	height:235px;
+}
 
+#signinFormAside b{
+	color:#FFF;
+}
+
+#signinFormAside .message{
+	width:225px;
+	margin:0 auto;
 }
 
 #signinFormBackground{
@@ -42,7 +60,6 @@ label{
 	text-transform:uppercase;
 	font-size: 11px;
 	font-weight:bold;
-	margin-bottom:-1px;
 }
 
 form input[type=password], form input[type=text]{
@@ -51,7 +68,13 @@ form input[type=password], form input[type=text]{
 
 
 footer{
-	bottom:0px;
+	
+}
+
+.footerContainer{
+height:20px;
+background-color:#000;
+width:100%;
 }
 
 .navbar-inner{

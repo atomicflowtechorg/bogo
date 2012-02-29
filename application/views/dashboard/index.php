@@ -69,8 +69,11 @@ if (!isset($session['logged_in']) || $session['logged_in'] == false) {
             $this->
                     load->view($viewLocation, $data);
             ?>
-                    <footer>
-                        <p>&copy; BoGo 2012</p>
-                    </footer>
-                </div><!-- /container --> </body>
+                    
+                </div><!-- /container --> 
+                <div class="footerContainer">
+                        <footer>
+                            <p>&copy; BoGo 2012</p>
+                        </footer>
+                    </div></body>
         </html>
