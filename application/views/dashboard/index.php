@@ -10,7 +10,7 @@ if (!isset($session['logged_in']) || $session['logged_in'] == false) {
     $nav['nav_account']= site_url('signout');
     $nav['nav_LogInOutText']= "Sign-Out";
 }
-?><!-- Dashbord Index -->
+?><!-- Dashbord/Index -->
     <html>
         <head>
             <meta charset="utf-8">
@@ -43,37 +43,38 @@ if (!isset($session['logged_in']) || $session['logged_in'] == false) {
                         </ul>
 
                         <ul class="nav pull-right">
-    
+                            <li class="divider-vertical"></li>
                             <li class="dropdown">
                                 <a href="#"class="dropdown-toggle"data-toggle="dropdown">
                                     Account <b class="caret"></b>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a href="<?php echo $nav['nav_account']; ?>"> <?php echo $nav['nav_LogInOutText']; ?>  </a>
-                                        <a href="#">Profile</a>
-                                    </li>
-                                </ul>
-                            </li>
+                                        <a href="<?php echo $nav['nav_account']; ?>
+                                            ">
+                                            <?php echo $nav['nav_LogInOutText']; ?></a>
+                                            <a href="#">Profile</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="divider-vertical"></li>
+                                style
+                            </ul>
 
-
-                        </ul>
-
-
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="container">
-                <?php
+                <div class="container">
+                    <?php
             $this->
-                    load->view($viewLocation, $data);
+                        load->view($viewLocation, $data);
             ?>
-                    
-                </div><!-- /container --> 
-                <div class="footerContainer">
+                    </div><!-- /container -->
+                    <div class="footerContainer">
                         <footer>
                             <p>&copy; BoGo 2012</p>
                         </footer>
-                    </div></body>
-        </html>
+                    </div>
+                </body>
+            </html>

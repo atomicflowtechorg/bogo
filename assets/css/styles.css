@@ -29,15 +29,23 @@ margin-bottom: 50px;
 	height:100%;
 }
 #signinRow{
-	height:235px;
+	height:300px;
 }
 
 #signinFormAside b{
 	color:#FFF;
 }
 
+#signinFormAside h4{
+	margin-top:18px;
+}
+
+#signinFormAside button{
+	margin-top:18px;
+}
+
 #signinFormAside .message{
-	width:225px;
+	width:285px;
 	margin:0 auto;
 }
 
@@ -48,11 +56,6 @@ margin-bottom: 50px;
 	height:100%;
 	padding-top:150px;
 	margin-top:-150px;
-}
-
-legend{
-	color:#fff;
-	border-bottom:none;
 }
 
 label{
@@ -75,6 +78,7 @@ footer{
 height:20px;
 background-color:#000;
 width:100%;
+display: none;
 }
 
 .navbar-inner{
@@ -82,8 +86,11 @@ width:100%;
 }
 
 legend{
-font-size: 30px;
+font-size: 26px;
 font-weight: bold;
+color:#fff;
+	border-bottom:none;
+	margin-bottom: 0px;
 }
 
 form{
