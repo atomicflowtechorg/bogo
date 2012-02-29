@@ -14,7 +14,7 @@ class Tiler extends CI_Controller {
     public function index() {
        $this->load->model('offer');
        $this->load->model('vendorModel');
-       $this->load->model('item');
+       $this->load->model('itemmodel');
        
        $data = array();
 //       $data['offers'] = $this->offer->offer_get_current();

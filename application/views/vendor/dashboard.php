@@ -15,7 +15,7 @@
                 <span><?php echo $item->initPrice . ' ' . $item->basePrice; ?></span>
                 <span><?php echo $item->totalQty . ' ' . $item->currentQty; ?></span>
 
-                <a href="<?php echo site_url('vendor/create/campaign');?>">Create Campaign</a>
+                <a href="<?php echo site_url('vendor/create/campaign/'.$item->itemId);?>">Create Campaign</a>
             </div>
         </li>
         <?php

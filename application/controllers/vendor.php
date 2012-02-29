@@ -59,10 +59,10 @@ class Vendor extends CI_Controller {
         }
     }
 
-    public function create_campaign() {
+    public function create_campaign($itemId) {
         $this->load->model('itemmodel');
         $this->load->model('offer');
-        
+
         $this->load->helper(array('form', 'file'));
 
         $this->load->library('form_validation');
@@ -70,18 +70,23 @@ class Vendor extends CI_Controller {
         //TODO: implement vendor login and session create
         $vendorId = $this->vendorId;
 
-        $this->form_validation->set_rules('item', 'Item', 'trim|required|xss_clean');
         $this->form_validation->set_rules('startDate', 'Start Date', 'trim|required|xss_clean');
         $this->form_validation->set_rules('endDate', 'End Date', 'trim|required|xss_clean');
-
+        $data['item'] = $this->itemmodel->get_item($itemId);
         if ($this->form_validation->run() == FALSE) {
             $data['viewLocation'] = 'vendor/campaign/create';
             $data['data'] = $data;
             $this->load->view('dashboard/index', $data);
         } else {
-            
-            $data['campaign'] = $this->offer->create_campaign();
-            $data['viewLocation'] = 'vendor/campaign/createSuccess';
+            try {
+                $data['campaign'] = $this->offer->create_campaign($itemId);
+            } catch (Exception $e) {
+                $data['exception'] = 'Caught exception: ' . $e->getMessage() . "\n";
+            }
+
+
+
+            $data['viewLocation'] = 'vendor/campaign/createSubmit';
             $data['data'] = $data;
             $this->load->view('dashboard/index', $data);
         }

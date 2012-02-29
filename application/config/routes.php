@@ -43,7 +43,7 @@ $route['signup'] = 'authentication/signup_consumer';
 $route['signin'] = 'authentication/signin_consumer';
 $route['signout'] = 'authentication/signout_consumer';
 
-$route['vendor/create/campaign'] = 'vendor/create_campaign';
+$route['vendor/create/campaign/(:num)'] = 'vendor/create_campaign/$1';
 
 $route['offers'] = 'consumer';
 $route['offers/(:num)'] = 'item/view_item/$1';
