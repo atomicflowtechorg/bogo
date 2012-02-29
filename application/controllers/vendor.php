@@ -70,7 +70,6 @@ class Vendor extends CI_Controller {
         //TODO: implement vendor login and session create
         $vendorId = $this->vendorId;
 
-        $this->form_validation->set_rules('item', 'Item', 'trim|required|xss_clean');
         $this->form_validation->set_rules('startDate', 'Start Date', 'trim|required|xss_clean');
         $this->form_validation->set_rules('endDate', 'End Date', 'trim|required|xss_clean');
         $data['item'] = $this->itemmodel->get_item($itemId);
@@ -79,9 +78,15 @@ class Vendor extends CI_Controller {
             $data['data'] = $data;
             $this->load->view('dashboard/index', $data);
         } else {
+            try {
+                $data['campaign'] = $this->offer->create_campaign($itemId);
+            } catch (Exception $e) {
+                $data['exception'] = 'Caught exception: ' . $e->getMessage() . "\n";
+            }
 
-            $data['campaign'] = $this->offer->create_campaign();
-            $data['viewLocation'] = 'vendor/campaign/createSuccess';
+
+
+            $data['viewLocation'] = 'vendor/campaign/createSubmit';
             $data['data'] = $data;
             $this->load->view('dashboard/index', $data);
         }

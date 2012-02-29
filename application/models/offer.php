@@ -135,23 +135,58 @@ class offer extends CI_Model {
         return $items_all;
     }
 
-    function create_campaign() {
-        $this->item->itemId = $this->input->post('itemId');
+    function create_campaign($itemId) {
+        $this->item->itemId = $itemId;
         $this->startDate = $this->input->post('startDate');
         $this->endDate = $this->input->post('endDate');
         
-        return $this;
+        $now = strtotime('now');
         
-        //TODO: check that no other campaigns are running during the dates specified
-        //TODO: validate that item has enough qty to create a new campaign
+        //Check that dates are not in the past
+        if(strtotime($this->startDate) < $now){
+            throw new Exception('start date before now');
+        }
+        
+        
+        if(strtotime($this->startDate) > strtotime($this->endDate)){
+            throw new Exception('start date after end date');
+        }
         
         $this->db->trans_start();
+        
+        //check that no other campaigns are running during the dates specified
+        $query = $this->db->query("SELECT pkCampaignId, fldStartDate, fldEndDate FROM tblCampaign WHERE fkVendorId = $this->vendorId");
+        foreach($query->result() as $campaign){
+            //check if start date or end date clashses
+            if($this->check_in_range($campaign->fldStartDate, $campaign->fldEndDate, $this->startDate) || $this->check_in_range($campaign->fldStartDate, $campaign->fldEndDate, $this->endDate)){
+               throw new Exception('date collision') ;
+            }
+        }
+        
+        //validate that item has enough qty to create a new campaign
+        $itemQty = $this->db->query("SELECT fldCurrentQty FROM tblItem WHERE pkItemId = ".$this->item->itemId);
+        $currentQty = $itemQty->row()->fldCurrentQty;
+        if($currentQty < 5){
+            throw new Exception('Not Enough Items to create Campaign (Min: 5)');
+        }
         $this->db->query("INSERT INTO tblCampaign (fkVendorId, fldStartDate, fldEndDate) VALUES('$this->vendorId','$this->startDate', '$this->endDate')");
         $this->campaignId = $this->db->insert_id();
         $this->db->query("INSERT INTO tblItemCampaign (fkItemId, fkCampaignId) VALUES('".$this->item->itemId."', '$this->campaignId')");
         $this->db->trans_complete();
         
         return $this;
+    }
+    
+    
+    private function check_in_range($start_date, $end_date, $date_from_user)
+    {
+      // Convert to timestamp
+      $start_ts = strtotime($start_date);
+      $end_ts = strtotime($end_date);
+      $user_ts = strtotime($date_from_user);
+
+      // Check that user date is between start & end
+      return (($user_ts >= $start_ts) && ($user_ts <= $end_ts));
     }
 
 }

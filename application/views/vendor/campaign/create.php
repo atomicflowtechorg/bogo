@@ -1,7 +1,7 @@
 <h1>Create Campaign for <?php echo $item->name; ?></h1>
 <?php
 echo validation_errors();
-echo form_open(site_url('vendor/campaign/create/'.$item->itemId));
+echo form_open(site_url('vendor/create/campaign/'.$item->itemId));
 
 $item = array(
               'name'        => 'item',
@@ -28,7 +28,7 @@ $endDate = array(
               'size'        => '50'
             );
 echo form_label('End Date:','endDate');
-echo form_input($startDate);
+echo form_input($endDate);
 
 
 echo form_reset('reset','Reset');

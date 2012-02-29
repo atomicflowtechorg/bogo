@@ -95,7 +95,6 @@ class consumer extends CI_Model {
             $this->state = $consumer->fldState;
             //TODO: set last logged in
             //$this->lastLoggedIn = date();
-
             //set session
             $sessionData = array(
                 'username' => $this->username,
