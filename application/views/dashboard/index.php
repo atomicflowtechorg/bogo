@@ -58,7 +58,6 @@ if (!isset($session['logged_in']) || $session['logged_in'] == false) {
                                     </ul>
                                 </li>
                                 <li class="divider-vertical"></li>
-                                style
                             </ul>
 
                         </div>

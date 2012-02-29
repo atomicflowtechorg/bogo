@@ -13,9 +13,12 @@ form_hidden($item);
 $startDate = array(
               'name'        => 'startDate',
               'id'          => 'startDate',
+              'class'          => 'input-append datepicker',
               'value'       => '',
               'maxlength'   => '100',
-              'size'        => '50'
+              'size'        => '50',
+              'data-date'   =>'12-02-2012',
+              'data-date-format' => 'dd-mm-yyyy'
             );
 echo form_label('Start Date:','startDate');
 echo form_input($startDate);

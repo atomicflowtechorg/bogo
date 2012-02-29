@@ -9,4 +9,7 @@ jQuery(function($){
 					]
 				});
 
+		   $('.datepicker').datepicker()
+
+
 		    });
