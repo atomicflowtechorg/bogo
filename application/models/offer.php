@@ -44,7 +44,7 @@ class offer extends CI_Model {
 
     function get_available_offers_for_unregistered_user() {
         $queryString = "SELECT DISTINCT pkItemId, fldName, fldInitialPrice, fldBasePrice, fldRateDecrease, fldTotalQty, fldCurrentQty, fkVendorId
-                        FROM uvmcon5_Bogo.tblItem";
+                        FROM tblItem";
 
         $query = $this->db->query($queryString);
         $items_all = array();
