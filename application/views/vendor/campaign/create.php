@@ -13,12 +13,12 @@ form_hidden($item);
 $startDate = array(
               'name'        => 'startDate',
               'id'          => 'startDate',
-              'class'          => 'input-append datepicker',
-              'value'       => '',
+              'class'          => 'span2 datepicker',
+              'value'       => '02/16/12',
               'maxlength'   => '100',
-              'size'        => '50',
+              // 'size'        => '50',
               'data-date'   =>'12-02-2012',
-              'data-date-format' => 'dd-mm-yyyy'
+              'data-date-format' => 'mm/dd/yyyy'
             );
 echo form_label('Start Date:','startDate');
 echo form_input($startDate);
@@ -28,7 +28,11 @@ $endDate = array(
               'id'          => 'endDate',
               'value'       => '',
               'maxlength'   => '100',
-              'size'        => '50'
+              'size'        => '50',
+              'class'          => 'span2 datepicker',
+              'value'       => '02/16/12',
+              'data-date'   =>'12-02-2012',
+              'data-date-format' => 'mm/dd/yyyy'
             );
 echo form_label('End Date:','endDate');
 echo form_input($endDate);

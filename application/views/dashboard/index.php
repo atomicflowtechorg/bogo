@@ -6,6 +6,7 @@ if (!isset($session['logged_in']) || $session['logged_in'] == false) {
     $nav['nav_account']= site_url('signin');
     //potentially this line below and the partner line below are causing slow loadtimes.
     $nav['nav_LogInOutText']= "Sign-In";
+
 } else {
     $nav['nav_account']= site_url('signout');
     $nav['nav_LogInOutText']= "Sign-Out";
@@ -21,7 +22,12 @@ if (!isset($session['logged_in']) || $session['logged_in'] == false) {
 
             <script type="text/javascript" src="/assets/js/jquery-1.7.1.min.js"></script>
             <script type="text/javascript" src="/assets/js/bootstrap.js"></script>
-            <script type="text/javascript" src="/assets/js/supersized.core.3.2.1.min.js"></script>
+
+            <?php if (!isset($session['logged_in']) || $session['logged_in'] == false): true ?>
+            <?php echo "<script type='text/javascript' src='/assets/js/supersized.core.3.2.1.min.js'></script>" ?>
+            <?php endif ?> 
+
+
             <script type="text/javascript" src="/assets/js/starter.js"></script>
         </head>
         <body>

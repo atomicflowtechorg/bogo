@@ -3525,7 +3525,8 @@ left: 7px;
 display: none;
 }
 .datepicker table {
-width: 100%;
+/*width: 100%;*/
+width:200px;
 margin: 0;
 }
 .datepicker td, .datepicker th {
