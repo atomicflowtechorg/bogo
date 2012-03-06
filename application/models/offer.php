@@ -99,6 +99,40 @@ class offer extends CI_Model {
         return $items_all;
     }
 
+    // function get_available_offers_for_user() {
+    //     $session = $this->session->all_userdata();
+    //     $username = $session['username'];
+
+    //     $queryString = "SELECT DISTINCT pkItemId, fldName, fldInitialPrice, fldBasePrice, fldRateDecrease, fldTotalQty, fldCurrentQty, fkVendorId 
+    //         FROM tblItem
+    //         LEFT JOIN tblItemCohort
+    //         ON tblItem.pkItemId = tblItemCohort.fkItemId
+    //         LEFT JOIN tblConsumerCohort
+    //         ON tblConsumerCohort.fkCohortId = tblItemCohort.fkCohortId
+    //         WHERE pkItemId NOT IN(
+    //         SELECT fkItemId FROM tblItemCohort 
+    //         INNER JOIN tblConsumerCohort
+    //         ON tblConsumerCohort.fkCohortId = tblItemCohort.fkCohortId
+    //         WHERE fkUsername = '$username')";
+    //     $query = $this->db->query($queryString);
+    //     $items_all = array();
+    //     foreach ($query->result() as $item) {
+    //         $itemObject = new itemModel();
+    //         $itemObject->itemId = $item->pkItemId;
+    //         $itemObject->name = $item->fldName;
+    //         $itemObject->initPrice = $item->fldInitialPrice;
+    //         $itemObject->basePrice = $item->fldBasePrice;
+    //         $itemObject->rateDecrease = $item->fldRateDecrease;
+    //         $itemObject->totalQty = $item->fldTotalQty;
+    //         $itemObject->currentQty = $item->fldCurrentQty;
+    //         $itemObject->vendorId = $item->fkVendorId;
+    //         $itemObject->userInCohort = 0;
+    //         array_push($items_all, $itemObject);
+    //     }
+
+    //     return $items_all;
+    // }
+
     function get_enrolled_offers_for_user() {
         $session = $this->session->all_userdata();
         $username = $session['username'];

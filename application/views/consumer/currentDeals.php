@@ -24,7 +24,7 @@ else{
                 $url = site_url('offers/cohort/'. $offer->cohortId);
             }
         ?>
-        <li>
+        <li class="item">
             <div class="vendor-item">
                 <h3><a href="<?php echo $url; ?>"><?php echo $offer->name; ?></a></h3>
                 <span><?php echo $offer->initPrice . ' ' . $offer->basePrice; ?></span>

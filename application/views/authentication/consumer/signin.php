@@ -16,7 +16,7 @@
                         <h4>Free. Simple. Smart.</h4>
 
                         <div class="control-group">
-                            <button type="button" class="btn btn-primary"> <i class="icon-heart icon-white"></i>
+                            <button type="button" class="btn btn-primary signupButton"> <i class="icon-heart icon-white"></i>
                                 Sign Up
                             </button>
                         </div>

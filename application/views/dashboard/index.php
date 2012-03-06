@@ -22,13 +22,20 @@ if (!isset($session['logged_in']) || $session['logged_in'] == false) {
 
             <script type="text/javascript" src="/assets/js/jquery-1.7.1.min.js"></script>
             <script type="text/javascript" src="/assets/js/bootstrap.js"></script>
+            <script type="text/javascript" src="/assets/js/jquery.masonry.min.js"></script>
+
 
             <?php if (!isset($session['logged_in']) || $session['logged_in'] == false): true ?>
             <?php echo "<script type='text/javascript' src='/assets/js/supersized.core.3.2.1.min.js'></script>" ?>
+
+            <?php echo "<script type='text/javascript' src='/assets/js/loggedOut.js'></script>" ?>
+
             <?php endif ?> 
 
-
+            
             <script type="text/javascript" src="/assets/js/starter.js"></script>
+
+            
         </head>
         <body>
 
@@ -43,9 +50,18 @@ if (!isset($session['logged_in']) || $session['logged_in'] == false) {
                             <li>
                                 <a href="#">Groups</a>
                             </li>
-                            <li>
-                                <a href="<?php echo site_url('offers'); ?>">Offers</a>
-                            </li>
+
+                            <li class="dropdown">
+                                <a href="#"class="dropdown-toggle"data-toggle="dropdown">
+                                    Offers <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                            <a href="<?php echo site_url('offers'); ?>">View Offers</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
                         </ul>
 
                         <ul class="nav pull-right">

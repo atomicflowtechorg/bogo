@@ -1,15 +1,19 @@
 jQuery(function($){
 				
-				$.supersized({
-					start_slide             :   0,			// Start slide (0 is random)
-					slides  :  	[ 
-					{image : '/assets/image/background/fabdezbg.jpg', title : 'Image Credit: Fab Design'} ,
-								  // {image : '/assets/image/background/kitchen.jpg', title : 'Image Credit: Fab Design'} ,
-					 {image : '/assets/image/background/kittyEdit.jpg', title : 'Kitty BG'} ,
-					]
-				});
+		   $('.datepicker').datepicker();
+		   
+		   $('.signupButton').click(function(){
+		   		var toLoad = $(this).attr('href')+'#content';
 
-		   $('.datepicker').datepicker()
+		   });
 
+
+		   $('#container').masonry({
+			  itemSelector: '.item',
+			  columnWidth: 240,
+			  animationOptions: {
+			    duration: 400
+			  }
+			});
 
 		    });
