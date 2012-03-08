@@ -14,11 +14,11 @@ $startDate = array(
               'name'        => 'startDate',
               'id'          => 'startDate',
               'class'          => 'span2 datepicker',
-              'value'       => '02/16/12',
+              'value'       => '2012/2/12',
               'maxlength'   => '100',
               // 'size'        => '50',
-              'data-date'   =>'12-02-2012',
-              'data-date-format' => 'mm/dd/yyyy'
+              'data-date'   =>'2012-2-12',
+              'data-date-format' => 'yyyy/mm/dd'
             );
 echo form_label('Start Date:','startDate');
 echo form_input($startDate);
@@ -30,9 +30,9 @@ $endDate = array(
               'maxlength'   => '100',
               'size'        => '50',
               'class'          => 'span2 datepicker',
-              'value'       => '02/16/12',
-              'data-date'   =>'12-02-2012',
-              'data-date-format' => 'mm/dd/yyyy'
+              'value'       => '2012/2/12',
+              'data-date'   =>'2012-2-12',
+              'data-date-format' => 'yyyy/mm/dd'
             );
 echo form_label('End Date:','endDate');
 echo form_input($endDate);
