@@ -74,7 +74,27 @@ class itemModel extends CI_Model {
             throw new Exception("No Items found with itemId $itemId");
         }
     }
-
+    
+    function get_item_for_campaign($campaignId){
+        $queryItem = $this->db->query("SELECT pkItemId, fldName, fldInitialPrice, fldBasePrice, fldRateDecrease, fldTotalQty, fldCurrentQty, fkVendorId FROM tblItem 
+            INNER JOIN tblItemCampaign
+            ON tblItem.pkItemId = tblItemCampaign.fkItemId
+            WHERE fkCampaignId = $campaignId");
+        
+        foreach ($queryItem->result() as $item) {
+            $itemObject = new itemModel();
+            $itemObject->itemId = $item->pkItemId;
+            $itemObject->name = $item->fldName;
+            $itemObject->initPrice = $item->fldInitialPrice;
+            $itemObject->basePrice = $item->fldBasePrice;
+            $itemObject->rateDecrease = $item->fldRateDecrease;
+            $itemObject->totalQty = $item->fldTotalQty;
+            $itemObject->currentQty = $item->fldCurrentQty;
+            $itemObject->vendorId = $item->fkVendorId;
+        }
+        return $itemObject;
+    }
+    
     function get_items_for_vendor($vendorId) {
         $queryString = "SELECT pkItemId, fldName, fldInitialPrice, fldBasePrice, fldRateDecrease, fldTotalQty, fldCurrentQty, fkVendorId FROM tblItem WHERE fkVendorId = $vendorId";
         $query = $this->db->query($queryString);

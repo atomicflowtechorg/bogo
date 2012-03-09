@@ -10,16 +10,16 @@
  *
  * @author lpaulger
  */
-class Item extends CI_Controller {
+class campaign extends CI_Controller {
     public function index() {
         
     }
     public function view_campaign($campaignId){
-        $this->load->model('itemmodel');
+        $this->load->model('offer');
         $this->load->model('cohort');
         
         try {
-            $data['item'] = $this->itemmodel->get_item($itemId);
+            $data['item'] = $this->itemmodel->get_item_for_campaign($campaignId);
             $data['cohorts'] = $this->cohort->get_cohorts_for_campaign($campaignId);
         } catch (Exception $e) {
             $data['exception'] = 'Caught exception: ' . $e->getMessage() . "\n";
