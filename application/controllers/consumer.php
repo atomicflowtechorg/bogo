@@ -19,9 +19,7 @@ class Consumer extends CI_Controller {
         $this->load->model('offer');
         
         $data = array();
-        
-        
-        
+
         try {
             //$data['items'] = $this->itemmodel->get_all_items();
             $data['offers'] = $this->offer->get_all_offers();

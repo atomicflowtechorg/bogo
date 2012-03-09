@@ -46,7 +46,7 @@ $route['signout'] = 'authentication/signout_consumer';
 $route['vendor/create/campaign/(:num)'] = 'vendor/create_campaign/$1';
 
 $route['offers'] = 'consumer';
-$route['offers/(:num)'] = 'item/view_item/$1';
+$route['offers/(:num)'] = 'item/view_campaign/$1';
 $route['offers/join/(:num)'] = 'item/join_cohort/$1';
 $route['offers/create/(:num)'] = 'consumer/create_cohort/$1';
 

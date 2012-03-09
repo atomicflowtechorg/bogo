@@ -14,13 +14,13 @@ class Item extends CI_Controller {
     public function index() {
         
     }
-    public function view_item($itemId){
+    public function view_campaign($campaignId){
         $this->load->model('itemmodel');
         $this->load->model('cohort');
         
         try {
             $data['item'] = $this->itemmodel->get_item($itemId);
-            $data['cohorts'] = $this->cohort->get_cohorts_for_item($itemId);
+            $data['cohorts'] = $this->cohort->get_cohorts_for_campaign($campaignId);
         } catch (Exception $e) {
             $data['exception'] = 'Caught exception: ' . $e->getMessage() . "\n";
         }

@@ -82,17 +82,23 @@ class cohort extends CI_Model {
         }
     }
 
-    function get_cohorts_for_item($itemId) {
-        $queryString = "SELECT pkCohortId,fkItemId, fldExperation FROM tblItemCohort
-                        INNER JOIN tblCohort ON
-                        tblItemCohort.fkCohortId = tblCohort.pkCohortId
-                        WHERE fkItemId = $itemId";
+    function get_cohorts_for_campaign($campaignId) {
+        
+        $item = $this->itemmodel->get_item_for_campaign($campaignId);
+        
+        $queryString = "SELECT pkCohortId, fldExperation FROM tblCampaignCohort
+            INNER JOIN tblCohort ON
+            tblCampaignCohort.fkCohortId = tblCohort.pkCohortId
+            WHERE fkCampaignId = $campaignId";
+        
         $query = $this->db->query($queryString);
+        
+        
         $cohorts = array();
         foreach ($query->result() as $cohort) {
             $cohortObject = new cohort();
             $cohortObject->cohortId = $cohort->pkCohortId;
-            $cohortObject->itemId = $cohort->fkItemId;
+            $cohortObject->itemId = $item->itemId;
             $cohortObject->experation = $cohort->fldExperation;
             array_push($cohorts, $cohortObject);
         }

@@ -41,14 +41,14 @@ class offer extends CI_Model {
 
         return $all_offers;
     }
-
-    function get_available_offers_for_unregistered_user() {
-        $queryString = "SELECT DISTINCT pkItemId, fldName, fldInitialPrice, fldBasePrice, fldRateDecrease, fldTotalQty, fldCurrentQty, fkVendorId
-                        FROM tblItem";
-
-        $query = $this->db->query($queryString);
-        $items_all = array();
-        foreach ($query->result() as $item) {
+    
+    function get_item_for_campaign($campaignId){
+        $queryItem = $this->db->query("SELECT pkItemId, fldName, fldInitialPrice, fldBasePrice, fldRateDecrease, fldTotalQty, fldCurrentQty, fkVendorId FROM tblItem 
+            INNER JOIN tblItemCampaign
+            ON tblItem.pkItemId = tblItemCampaign.fkItemId
+            WHERE fkCampaignId = $campaignId");
+        
+        foreach ($queryItem->result() as $item) {
             $itemObject = new itemModel();
             $itemObject->itemId = $item->pkItemId;
             $itemObject->name = $item->fldName;
@@ -58,11 +58,36 @@ class offer extends CI_Model {
             $itemObject->totalQty = $item->fldTotalQty;
             $itemObject->currentQty = $item->fldCurrentQty;
             $itemObject->vendorId = $item->fkVendorId;
+        }
+        return $itemObject;
+    }
+    
+    function get_available_offers_for_unregistered_user() {
+        $queryString = "SELECT DISTINCT pkItemId, fldName, fldInitialPrice, fldBasePrice, fldRateDecrease, fldTotalQty, fldCurrentQty, fkVendorId, fkCampaignId
+                        FROM tblItem
+                        INNER JOIN tblItemCampaign 
+                        ON tblItem.pkItemId = tblItemCampaign.fkItemId";
+
+        $query = $this->db->query($queryString);
+        $offers_all = array();
+        foreach ($query->result() as $item) {
+            $itemObject = new itemModel();
+            $offer = new offer();
+            $itemObject->itemId = $item->pkItemId;
+            $itemObject->name = $item->fldName;
+            $itemObject->initPrice = $item->fldInitialPrice;
+            $itemObject->basePrice = $item->fldBasePrice;
+            $itemObject->rateDecrease = $item->fldRateDecrease;
+            $itemObject->totalQty = $item->fldTotalQty;
+            $itemObject->currentQty = $item->fldCurrentQty;
+            $itemObject->vendorId = $item->fkVendorId;
+            $offer->campaignId = $item->fkCampaignId;
             $itemObject->userInCohort = 0;
-            array_push($items_all, $itemObject);
+            $offer->item = $itemObject;
+            array_push($offers_all, $offer);
         }
 
-        return $items_all;
+        return $offers_all;
     }
     
     /*
@@ -72,11 +97,11 @@ class offer extends CI_Model {
      * User (Joins)-> Cohort (For)-> Campaign
      * 
      */
-    function get_available_offers_for_user() {
+    function get_available_offers_for_user(){
         $session = $this->session->all_userdata();
         $username = $session['username'];
 
-        $queryString = "SELECT DISTINCT pkItemId, fldName, fldInitialPrice, fldBasePrice, fldRateDecrease, fldTotalQty, fldCurrentQty, fkVendorId 
+        $queryString = "SELECT DISTINCT pkItemId, fldName, fldInitialPrice, fldBasePrice, fldRateDecrease, fldTotalQty, fldCurrentQty, fkVendorId , tblItemCampaign.fkCampaignId
             FROM tblItem
             LEFT JOIN tblItemCampaign
             ON tblItem.pkItemId = tblItemCampaign.fkItemId
@@ -90,11 +115,13 @@ class offer extends CI_Model {
                 ON tblItemCampaign.fkCampaignId = tblCampaignCohort.fkCampaignId
                 INNER JOIN tblConsumerCohort
                 ON tblConsumerCohort.fkCohortId = tblCampaignCohort.fkCohortId
-                WHERE fkUsername = '$username')";
+                WHERE fkUsername = '$username')
+        AND tblItemCampaign.fkCampaignId IS NOT NULL";
         $query = $this->db->query($queryString);
-        $items_all = array();
+        $offers_all = array();
         foreach ($query->result() as $item) {
             $itemObject = new itemModel();
+            $offer = new offer();
             $itemObject->itemId = $item->pkItemId;
             $itemObject->name = $item->fldName;
             $itemObject->initPrice = $item->fldInitialPrice;
@@ -103,11 +130,13 @@ class offer extends CI_Model {
             $itemObject->totalQty = $item->fldTotalQty;
             $itemObject->currentQty = $item->fldCurrentQty;
             $itemObject->vendorId = $item->fkVendorId;
+            $offer->campaignId = $item->fkCampaignId;
             $itemObject->userInCohort = 0;
-            array_push($items_all, $itemObject);
+            $offer->item = $itemObject;
+            array_push($offers_all, $offer);
         }
 
-        return $items_all;
+        return $offers_all;
     }
     
     
@@ -122,7 +151,7 @@ class offer extends CI_Model {
         $session = $this->session->all_userdata();
         $username = $session['username'];
 
-        $queryString = "SELECT pkItemId, fldName, fldInitialPrice, fldBasePrice, fldRateDecrease, fldTotalQty, fldCurrentQty, fkVendorId, tblConsumerCohort.fkCohortId 
+        $queryString = "SELECT pkItemId, fldName, fldInitialPrice, fldBasePrice, fldRateDecrease, fldTotalQty, fldCurrentQty, fkVendorId, tblItemCampaign.fkCampaignId 
             FROM tblItem
             INNER JOIN tblItemCampaign
             ON tblItem.pkItemId = tblItemCampaign.fkItemId
@@ -137,11 +166,13 @@ class offer extends CI_Model {
                 INNER JOIN tblConsumerCohort
                 ON tblConsumerCohort.fkCohortId = tblCampaignCohort.fkCohortId
                 WHERE fkUsername = '$username')
-            AND fkUsername = '$username'";
+            AND fkUsername = '$username'
+            AND tblItemCampaign.fkCampaignId IS NOT NULL";
         $query = $this->db->query($queryString);
-        $items_all = array();
+        $offers_all = array();
         foreach ($query->result() as $item) {
             $itemObject = new itemModel();
+            $offer = new offer();
             $itemObject->itemId = $item->pkItemId;
             $itemObject->name = $item->fldName;
             $itemObject->initPrice = $item->fldInitialPrice;
@@ -151,11 +182,14 @@ class offer extends CI_Model {
             $itemObject->currentQty = $item->fldCurrentQty;
             $itemObject->cohortId = $item->fkCohortId;
             $itemObject->vendorId = $item->fkVendorId;
+            $offer->campaignId = $item->fkCampaignId;
             $itemObject->userInCohort = 1;
-            array_push($items_all, $itemObject);
+            $offer->item = $itemObject;
+            
+            array_push($offers_all, $offer);
         }
 
-        return $items_all;
+        return $offers_all;
     }
 
     function create_campaign($itemId) {
