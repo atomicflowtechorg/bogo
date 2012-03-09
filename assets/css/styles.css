@@ -96,3 +96,14 @@ color:#fff;
 form{
 
 }
+
+.masonry{
+	background:#fff;
+	height:400px;
+}
+
+.masonry-brick{
+	border-style: solid;
+	border-width: 1px;
+	border-color:red;
+}

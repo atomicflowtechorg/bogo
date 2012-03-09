@@ -11,7 +11,7 @@ else{
  * and open the template in the editor.
  */
 ?>
-<ul>
+<div class="masonry">
     <?php
     foreach ($offers as $offer) {
             $url;
@@ -24,14 +24,14 @@ else{
                 $url = site_url('offers/cohort/'. $offer->cohortId);
             }
         ?>
-        <li class="item">
+        <div class="masonry-brick span2  ">
             <div class="vendor-item">
                 <h3><a href="<?php echo $url; ?>"><?php echo $offer->name; ?></a></h3>
                 <span><?php echo $offer->initPrice . ' ' . $offer->basePrice; ?></span>
                 <span><?php echo $offer->totalQty . ' ' . $offer->currentQty; ?></span>
             </div>
-        </li>
+        </div>
         <?php
     }
     ?>
-</ul>
+</div>
