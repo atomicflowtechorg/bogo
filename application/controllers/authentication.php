@@ -74,10 +74,9 @@ class Authentication extends CI_Controller {
             } catch (Exception $e) {
                 $data['exception'] = 'Caught exception: ' . $e->getMessage() . "\n";
             }
-
-
-
-
+            if($data['exception'] == null){
+                redirect('/consumer', 'location');
+            }
             $data['viewLocation'] = 'authentication/consumer/signinSuccess';
             $data['data'] = $data;
             $this->load->view('dashboard/index', $data);
