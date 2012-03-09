@@ -38,7 +38,6 @@ class offer extends CI_Model {
         } else {
             $all_offers = $this->get_available_offers_for_unregistered_user();
         }
-
         return $all_offers;
     }
     
@@ -72,7 +71,7 @@ class offer extends CI_Model {
             $offer->item = $itemObject;
             array_push($offers_all, $offer);
         }
-
+        
         return $offers_all;
     }
     
@@ -89,22 +88,21 @@ class offer extends CI_Model {
 
         $queryString = "SELECT pkItemId, fldName, fldInitialPrice, fldBasePrice, fldRateDecrease, fldTotalQty, fldCurrentQty, tblItem.fkVendorId, tblItemCampaign.fkCampaignId, fldStartDate, fldEndDate 
             FROM tblItem
-            INNER JOIN tblItemCampaign
+            LEFT JOIN tblItemCampaign
             ON tblItem.pkItemId = tblItemCampaign.fkItemId
-            INNER JOIN tblCampaignCohort
+            LEFT JOIN tblCampaignCohort
             ON tblItemCampaign.fkCampaignId = tblCampaignCohort.fkCampaignId
-            INNER JOIN tblConsumerCohort
+            LEFT JOIN tblConsumerCohort
             ON tblConsumerCohort.fkCohortId = tblCampaignCohort.fkCohortId
-            INNER JOIN tblCampaign
+            LEFT JOIN tblCampaign
             ON tblItemCampaign.fkCampaignId = tblCampaign.pkCampaignId
-            WHERE pkItemId IN(
+            WHERE pkItemId NOT IN(
                 SELECT tblItemCampaign.fkItemId FROM tblItemCampaign 
                 INNER JOIN tblCampaignCohort
                 ON tblItemCampaign.fkCampaignId = tblCampaignCohort.fkCampaignId
                 INNER JOIN tblConsumerCohort
                 ON tblConsumerCohort.fkCohortId = tblCampaignCohort.fkCohortId
                 WHERE fkUsername = '$username')
-            AND fkUsername = '$username'
             AND tblItemCampaign.fkCampaignId IS NOT NULL
             AND fldEndDate > NOW()
             AND fldStartDate <= NOW()";
@@ -128,7 +126,6 @@ class offer extends CI_Model {
             $offer->item = $itemObject;
             array_push($offers_all, $offer);
         }
-
         return $offers_all;
     }
     
@@ -200,6 +197,9 @@ class offer extends CI_Model {
 
         //Check that dates are not in the past
         if (strtotime($this->startDate) < $now) {
+            print_r(strtotime($this->startDate));
+            echo "<br>";
+            print_r($now);
             throw new Exception('start date before now');
         }
 
