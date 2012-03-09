@@ -77,16 +77,20 @@ class offer extends CI_Model {
         $username = $session['username'];
 
         $queryString = "SELECT DISTINCT pkItemId, fldName, fldInitialPrice, fldBasePrice, fldRateDecrease, fldTotalQty, fldCurrentQty, fkVendorId 
-         FROM tblItem
-         LEFT JOIN tblItemCohort
-         ON tblItem.pkItemId = tblItemCohort.fkItemId
-         LEFT JOIN tblConsumerCohort
-         ON tblConsumerCohort.fkCohortId = tblItemCohort.fkCohortId
-         WHERE pkItemId NOT IN(
-         SELECT fkItemId FROM tblItemCohort 
-         INNER JOIN tblConsumerCohort
-         ON tblConsumerCohort.fkCohortId = tblItemCohort.fkCohortId
-         WHERE fkUsername = '$username')";
+            FROM tblItem
+            LEFT JOIN tblItemCampaign
+            ON tblItem.pkItemId = tblItemCampaign.fkItemId
+            LEFT JOIN tblCampaignCohort
+            ON tblCampaignCohort.fkCampaignId = tblItemCampaign.fkCampaignId
+            LEFT JOIN tblConsumerCohort
+            ON tblConsumerCohort.fkCohortId = tblCampaignCohort.fkCohortId
+            WHERE pkItemId NOT IN(
+                SELECT tblItemCampaign.fkItemId FROM tblItemCampaign 
+                INNER JOIN tblCampaignCohort
+                ON tblItemCampaign.fkCampaignId = tblCampaignCohort.fkCampaignId
+                INNER JOIN tblConsumerCohort
+                ON tblConsumerCohort.fkCohortId = tblCampaignCohort.fkCohortId
+                WHERE fkUsername = '$username')";
         $query = $this->db->query($queryString);
         $items_all = array();
         foreach ($query->result() as $item) {
@@ -120,15 +124,19 @@ class offer extends CI_Model {
 
         $queryString = "SELECT pkItemId, fldName, fldInitialPrice, fldBasePrice, fldRateDecrease, fldTotalQty, fldCurrentQty, fkVendorId, tblConsumerCohort.fkCohortId 
             FROM tblItem
-            INNER JOIN tblItemCohort
-            ON tblItem.pkItemId = tblItemCohort.fkItemId
+            INNER JOIN tblItemCampaign
+            ON tblItem.pkItemId = tblItemCampaign.fkItemId
+            INNER JOIN tblCampaignCohort
+            ON tblItemCampaign.fkCampaignId = tblCampaignCohort.fkCampaignId
             INNER JOIN tblConsumerCohort
-            ON tblConsumerCohort.fkCohortId = tblItemCohort.fkCohortId
+            ON tblConsumerCohort.fkCohortId = tblCampaignCohort.fkCohortId
             WHERE pkItemId IN(
-            SELECT fkItemId FROM tblItemCohort 
-            INNER JOIN tblConsumerCohort
-            ON tblConsumerCohort.fkCohortId = tblItemCohort.fkCohortId
-            WHERE fkUsername = '$username')
+                SELECT tblItemCampaign.fkItemId FROM tblItemCampaign 
+                INNER JOIN tblCampaignCohort
+                ON tblItemCampaign.fkCampaignId = tblCampaignCohort.fkCampaignId
+                INNER JOIN tblConsumerCohort
+                ON tblConsumerCohort.fkCohortId = tblCampaignCohort.fkCohortId
+                WHERE fkUsername = '$username')
             AND fkUsername = '$username'";
         $query = $this->db->query($queryString);
         $items_all = array();
