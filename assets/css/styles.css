@@ -107,3 +107,12 @@ form{
 	border-width: 1px;
 	border-color:red;
 }
+
+.navbar .brand{
+	background: url("/assets/image/logo/KarrrmaWordmark.png") no-repeat; 
+	position: relative;
+	width: 120px;
+	height:10px;
+	text-indent: -9999px; 
+	top: 7px;
+}
