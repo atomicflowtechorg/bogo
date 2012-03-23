@@ -1,0 +1,30 @@
+1:
+    pkItemId: 1
+    fldName: 'cheese'
+    fldInitialPrice: 5
+    fldBasePrice: 1
+    fldRateDecrease: 1
+    fldTotalQty: 100
+    fldCurrentQty: 90
+    fkVendorId: 1
+
+2:
+    pkItemId: 2
+    fldName: 'play-doh'
+    fldInitialPrice: 10
+    fldBasePrice: 5
+    fldRateDecrease: 1
+    fldTotalQty: 200
+    fldCurrentQty: 100
+    fkVendorId: 1
+
+3:
+    pkItemId: 3
+    fldName: 'skates'
+    fldInitialPrice: 40
+    fldBasePrice: 20
+    fldRateDecrease: 5
+    fldTotalQty: 100
+    fldCurrentQty: 100
+    fkVendorId: 1
+
