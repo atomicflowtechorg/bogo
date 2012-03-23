@@ -116,3 +116,8 @@ form{
 	text-indent: -9999px; 
 	top: 7px;
 }
+
+.dropdown-menu li > a:hover, .dropdown-menu .active > a, .dropdown-menu .active > a:hover {
+  color: #ffffff;
+  background-color: #B4D02B;
+  }
