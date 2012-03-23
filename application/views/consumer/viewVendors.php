@@ -1,1 +1,8 @@
-LET'S VIEW SOME VENDORS YOU HAVE A RELATIONSHIP WITH
+<div class="vendorCard">
+    <div class="vendorNameContainer">
+        Nike Outlet
+    </div>
+    <div class="karmaIndicatorContainer">
+        
+    </div>
+</div>
