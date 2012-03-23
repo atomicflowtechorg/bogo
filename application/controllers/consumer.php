@@ -51,7 +51,7 @@ class Consumer extends CI_Controller {
         }
         $data['viewLocation'] = 'consumer/viewVendors';
         $data['data'] = $data;
-        $this->load->view('consumer/viewVendors', $data);
+        $this->load->view('dashboard/index', $data);
     }
 
     public function create_cohort($itemId) {
