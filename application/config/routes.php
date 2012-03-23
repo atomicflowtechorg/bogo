@@ -49,6 +49,7 @@ $route['offers'] = 'consumer';
 $route['offers/(:num)'] = 'campaign/view_campaign/$1';
 $route['offers/join/(:num)'] = 'item/join_cohort/$1';
 $route['offers/create/(:num)'] = 'consumer/create_cohort/$1';
+$route['vendors'] = 'consumer/view_vendors';
 
 $route['404_override'] = '';
 

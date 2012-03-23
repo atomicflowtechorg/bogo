@@ -58,7 +58,10 @@ if (!isset($session['logged_in']) || $session['logged_in'] == false) {
                                 <ul class="dropdown-menu">
                                     <li>
                                             <a href="<?php echo site_url('offers'); ?>">View Offers</a>
-                                        </li>
+                                    </li>
+                                    <li>
+                                            <a href="<?php echo site_url('vendors'); ?>">View Vendors</a>
+                                    </li>
                                     </ul>
                                 </li>
 
