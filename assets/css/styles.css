@@ -138,8 +138,31 @@ form{
   }
   .karmaIndicatorContainer{
   	width:100%;
-  	height: 60px;
+  	height: 53px;
   	background-color:#333333;
+  	padding-top:7px;
+  }
+  .karmaIndicator{
+  	width:95px;
+  	height:46px;
+  	background: url("/assets/image/icon/karmaIndicator.png");
+  	margin: 0 auto;
+  	line-height: 43px;
+  	vertical-align:center;
+  }
+
+  .karmaPoints{
+  	color: #B4D02B;
+  	width:40px;
+  	text-align:center;
+  	line-height: 43px;
+  	margin-bottom: 0;
+  	margin-left:3px;
+  	margin-right:3px;
+  	display: block;
+  	position: relative;
+  	top:17px;
+
   }
 
   .moreContainer{
