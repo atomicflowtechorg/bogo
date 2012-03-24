@@ -123,16 +123,33 @@ form{
   }
 
   .vendorCard{
-  	width:286px;
+  	width:220px;
   	height:248px;
   	background: #fff url("/assets/image/background/fabric_plaid.png");
   }
 
   .vendorNameContainer{
-  	height:100%;
+  	height:114px;
+  	text-align:center;
+  }
+   .vendorNameContainer h3{
+  	top:19px;
+  	position: relative;
   }
   .karmaIndicatorContainer{
   	width:100%;
   	height: 60px;
   	background-color:#333333;
   }
+
+  .moreContainer{
+  	height:76px;
+  }
+.moreTriangle{
+		border-top: 76px solid #F07E42;
+  	border-left: 76px solid transparent;
+  	height:0;
+  	width:0;
+  	position: relative;
+  	left:144px;
+}        

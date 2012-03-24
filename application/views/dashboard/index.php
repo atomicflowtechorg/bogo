@@ -22,6 +22,8 @@ if (!isset($session['logged_in']) || $session['logged_in'] == false) {
 
             <script type="text/javascript" src="/assets/js/jquery-1.7.1.min.js"></script>
             <script type="text/javascript" src="/assets/js/bootstrap.js"></script>
+            <script type="text/javascript" src="/assets/font/cufon-yui.js"></script>
+            <script type="text/javascript" src="/assets/font/Exo-Regular_400-Exo-Regular_700-Exo-Regular_italic_400-Exo-Regular_italic_700.font.js"></script>
             <script type="text/javascript" src="/assets/js/jquery.masonry.min.js"></script>
 
 

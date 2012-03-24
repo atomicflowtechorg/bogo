@@ -1,6 +1,13 @@
+
+
 <div class="vendorCard">
+    <div class="moreContainer">
+        <div class="moreTriangle">
+        
+    </div>
+    </div>
     <div class="vendorNameContainer">
-        Nike Outlet
+        <h3>Nike Outlet</h3>
     </div>
     <div class="karmaIndicatorContainer">
         

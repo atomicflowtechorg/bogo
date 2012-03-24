@@ -1,11 +1,12 @@
 jQuery(function($){
 				
 		   $('.datepicker').datepicker();
+		   Cufon.replace('h3, h1');
 		   
 		   $('.signupButton').click(function(){
 		   		var toLoad = $(this).attr('href')+'#content';
 
-		   });
+		   	});
 
 
 		   $('#container').masonry({
@@ -15,5 +16,4 @@ jQuery(function($){
 			    duration: 400
 			  }
 			});
-
-		    });
+});
