@@ -1,15 +1,15 @@
 1:
-    pkVendorId: 
-    fldName: 
-    fldStreetAddress: 
+    pkVendorId: 1
+    fldName: 'Lucas Co'
+    fldStreetAddress: '1 street'
 
 2:
-    pkVendorId: 
-    fldName: 
-    fldStreetAddress: 
+    pkVendorId: 2
+    fldName: 'Brandon Co'
+    fldStreetAddress: '2 street'
 
 3:
-    pkVendorId: 
-    fldName: 
-    fldStreetAddress: 
+    pkVendorId: 3
+    fldName: 'Brett Co'
+    fldStreetAddress: '3 street'
 
