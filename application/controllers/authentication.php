@@ -20,9 +20,12 @@ class Authentication extends CI_Controller {
         $this->load->helper(array('form', 'file'));
 
         $this->load->library('form_validation');
-
+        
         $this->load->model('user');
         $this->load->model('vendorModel');
+        
+        $session = $this->session->all_userdata();
+        
         $this->form_validation->set_rules('username', 'Username', 'trim|required|xss_clean');
         $this->form_validation->set_rules('password', 'Password', 'trim|required|matches[passwordConfirm]|md5');
         $this->form_validation->set_rules('passwordConfirm', 'Password Confirm', 'trim|required');
@@ -38,9 +41,20 @@ class Authentication extends CI_Controller {
         $data['cities'] = $this->vendorModel->get_vendor_cities_for_state($data['states'][0]);
 
         if ($this->form_validation->run() == FALSE) {
+            try{
+            if(isset($session['username']) || $session['logged_in'] == TRUE){
+                throw new exception("already signed in.");
+            }
             $data['viewLocation'] = 'authentication/user/register';
             $data['data'] = $data;
             $this->load->view('dashboard/index', $data);
+            }
+            catch(Exception $e){
+                $data['exception'] = 'Caught exception: ' . $e->getMessage() . "\n";
+                $data['viewLocation'] = 'dashboard/welcome';
+                $data['data'] = $data;
+                $this->load->view('dashboard/index', $data);
+            }
         } else {
             try {
                 $data['user'] = $this->user->create_user();
