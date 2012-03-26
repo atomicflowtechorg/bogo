@@ -1,7 +1,7 @@
 jQuery(function($){
 				
 		   $('.datepicker').datepicker();
-		   Cufon.replace('h3, h1, .karmaPoints, .morePlus');
+		   Cufon.replace('h3, h1, .karmaPoints, .morePlus, .vcVendorName');
 		   
 		   $('.signupButton').click(function(){
 		   		var toLoad = $(this).attr('href')+'#content';

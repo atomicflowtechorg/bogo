@@ -125,7 +125,6 @@ form{
   .vendorCard{
   	width:220px;
   	height:248px;
-  	background: #fff url("/assets/image/background/fabric_plaid.png");
     -webkit-box-shadow: -1px 2px 10px 1px rgba(0, 0, 0, .5);
 -moz-box-shadow: -1px 2px 10px 1px rgba(0, 0, 0, .5);
 box-shadow: -1px 2px 10px 1px rgba(0, 0, 0, .5);
@@ -133,17 +132,21 @@ box-shadow: -1px 2px 10px 1px rgba(0, 0, 0, .5);
 
   .vendorDetailsContainer{
     background-color:#F07E42;
+    height:248px;
   }
 
   .vendorNameContainer{
-  	height:114px;
+  	height:248px;
   	text-align:center;
+    background: #fff url("/assets/image/background/fabric_plaid.png");
   }
-   .vendorNameContainer h3{
-  	top:19px;
-  	position: relative;
-  	font-size:23px
-  }
+
+.vcVendorName{
+  position: relative;
+  top:114px;
+  font-size:23px;
+}
+
   .karmaIndicatorContainer{
   	width:220px;
   	height: 53px;
