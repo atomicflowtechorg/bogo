@@ -55,7 +55,7 @@ if (!isset($session['logged_in']) || $session['logged_in'] == false) {
 
                             <li class="dropdown">
                                 <a href="#"class="dropdown-toggle"data-toggle="dropdown">
-                                    deals <b class="caret"></b>
+                                    Deals <b class="caret"></b>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li>
@@ -91,7 +91,7 @@ if (!isset($session['logged_in']) || $session['logged_in'] == false) {
                     </div>
                 </div>
 
-                <div class="container">
+                <div class="container-fluid">
                     <?php
             $this->
                         load->view($viewLocation, $data);
