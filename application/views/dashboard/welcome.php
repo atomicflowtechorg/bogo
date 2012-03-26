@@ -14,7 +14,7 @@ if(isset($data['exception'])){
     </p>
 </div>
 
-<div class="row">
+<div class="row-fluid">
     <div class="span4">
         <h2>Browse deals</h2>
         <p>
