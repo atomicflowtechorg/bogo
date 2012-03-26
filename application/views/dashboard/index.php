@@ -1,7 +1,6 @@
 <?php
 $nav = array();
-$session = $this->
-    session->all_userdata();
+$session = $this->session->all_userdata();
 if (!isset($session['logged_in']) || $session['logged_in'] == false) {
     $nav['nav_account']= site_url('signin');
     //potentially this line below and the partner line below are causing slow loadtimes.

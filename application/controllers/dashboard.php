@@ -21,7 +21,7 @@ class Dashboard extends CI_Controller {
 //       $data['deals'] = $this->deal->deal_get_current();
 
         try {
-            $data['items'] = $this->itemmodel->get_all_items();
+            //$data['items'] = $this->itemmodel->get_all_items();
             $data['vendors'] = $this->vendorModel->get_all_vendors();
             $data['currentVendor'] = $this->vendorModel->get_vendor($data['vendors'][0]->id);
         } catch (Exception $e) {

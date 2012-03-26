@@ -1,3 +1,8 @@
+<?php
+if(isset($data['exception'])){
+    echo $data['exception'];
+}
+?>
 <!-- Dashboard/Welcome -->
 <div class="hero-unit">
     <h1>Welcome to Karrrma.</h1>

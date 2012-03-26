@@ -42,8 +42,6 @@ class user extends CI_Controller {
         $data = array();
 
         try {
-            //$data['items'] = $this->itemmodel->get_all_items();
-            $data['deals'] = $this->deal->get_all_deals();
             $data['vendors'] = $this->vendorModel->get_all_vendors();
             $data['currentVendor'] = $this->vendorModel->get_vendor($data['vendors'][0]->id);
         } catch (Exception $e) {
