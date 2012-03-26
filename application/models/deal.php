@@ -43,9 +43,6 @@ class deal extends CI_Model {
     
     //TODO: Rework this method for new db schema
     function get_available_deals_for_user(){
-        $session = $this->session->all_userdata();
-        $username = $session['username'];
-
         //$queryString = "";
         //$query = $this->db->query($queryString);
         $deals_all = array();
