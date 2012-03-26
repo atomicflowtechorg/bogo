@@ -39,17 +39,15 @@
 */
 
 $route['default_controller'] = "dashboard";
-$route['signup'] = 'authentication/signup_consumer';
-$route['signin'] = 'authentication/signin_consumer';
-$route['signout'] = 'authentication/signout_consumer';
+$route['signup'] = 'authentication/signup_user';
+$route['signin'] = 'authentication/signin_user';
+$route['signout'] = 'authentication/signout_user';
 
-$route['vendor/create/campaign/(:num)'] = 'vendor/create_campaign/$1';
+$route['vendor/create/deal/(:num)'] = 'vendor/create_deal/$1';
 
-$route['offers'] = 'consumer';
-$route['offers/(:num)'] = 'campaign/view_campaign/$1';
-$route['offers/join/(:num)'] = 'item/join_cohort/$1';
-$route['offers/create/(:num)'] = 'consumer/create_cohort/$1';
-$route['vendors'] = 'consumer/view_vendors';
+$route['deals'] = 'user';
+$route['deals/(:num)'] = 'deal/view_deal/$1';
+$route['vendors'] = 'user/view_vendors';
 
 $route['404_override'] = '';
 

@@ -19,7 +19,6 @@ class itemModel extends CI_Model {
     var $rateDecrease = '';
     var $totalQty = '';
     var $currentQty = '';
-    var $userInCohort = false;
     var $vendorId = '';
 
     function __construct() {
@@ -30,8 +29,6 @@ class itemModel extends CI_Model {
     function get_all_items() {
         $queryString = "SELECT pkItemId, fldName, fldInitialPrice, fldBasePrice, fldRateDecrease, fldTotalQty, fldCurrentQty, fkVendorId
                         FROM tblItem";
-                        
-        
 
         $query = $this->db->query($queryString);
         $items_all = array();
@@ -75,11 +72,11 @@ class itemModel extends CI_Model {
         }
     }
     
-    function get_item_for_campaign($campaignId){
+    function get_item_for_deal($dealId){
         $queryItem = $this->db->query("SELECT pkItemId, fldName, fldInitialPrice, fldBasePrice, fldRateDecrease, fldTotalQty, fldCurrentQty, fkVendorId FROM tblItem 
-            INNER JOIN tblItemCampaign
-            ON tblItem.pkItemId = tblItemCampaign.fkItemId
-            WHERE fkCampaignId = $campaignId");
+            INNER JOIN tblItemDeal
+            ON tblItem.pkItemId = tblItemDeal.fkItemId
+            WHERE fkdealId = $dealId");
         
         foreach ($queryItem->result() as $item) {
             $itemObject = new itemModel();

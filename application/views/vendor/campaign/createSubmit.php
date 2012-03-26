@@ -4,6 +4,6 @@ if(isset($data['exception'])){
 }
 else{
     echo "Success!";
-    print_r($campaign);
+    print_r($deal);
 }
 ?>

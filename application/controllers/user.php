@@ -10,63 +10,47 @@
  *
  * @author lpaulger
  */
-class Consumer extends CI_Controller {
+class user extends CI_Controller {
     
     //View Current Deals
     public function index() {
         $this->load->model('vendorModel');
         $this->load->model('itemmodel');
-        $this->load->model('offer');
+        $this->load->model('deal');
         
         $data = array();
 
         try {
             //$data['items'] = $this->itemmodel->get_all_items();
-            $data['offers'] = $this->offer->get_all_offers();
+            $data['deals'] = $this->deal->get_all_deals();
             $data['vendors'] = $this->vendorModel->get_all_vendors();
             $data['currentVendor'] = $this->vendorModel->get_vendor($data['vendors'][0]->id);
         } catch (Exception $e) {
             $data['exception'] = 'Caught exception: ' . $e->getMessage() . "\n";
         }
-        $data['viewLocation'] = 'consumer/currentDeals';
+        $data['viewLocation'] = 'user/currentDeals';
         $data['data'] = $data;
         $this->load->view('dashboard/index', $data);
     }
 
-    //View Vendors for Consumer
+    //View Vendors for user
     public function view_vendors() {
         $this->load->model('vendorModel');
         $this->load->model('itemmodel');
-        $this->load->model('offer');
+        $this->load->model('deal');
         
         $data = array();
 
         try {
             //$data['items'] = $this->itemmodel->get_all_items();
-            $data['offers'] = $this->offer->get_all_offers();
+            $data['deals'] = $this->deal->get_all_deals();
             $data['vendors'] = $this->vendorModel->get_all_vendors();
             $data['currentVendor'] = $this->vendorModel->get_vendor($data['vendors'][0]->id);
         } catch (Exception $e) {
             $data['exception'] = 'Caught exception: ' . $e->getMessage() . "\n";
         }
-        $data['viewLocation'] = 'consumer/viewVendors';
+        $data['viewLocation'] = 'user/viewVendors';
         $data['data'] = $data;
         $this->load->view('dashboard/index', $data);
     }
-
-    public function create_cohort($itemId) {
-        $this->load->model('itemmodel');
-        $this->load->model('cohort');
-
-        try {
-            $data['cohort'] = $this->cohort->create_cohort($itemId);
-        } catch (Exception $e) {
-            $data['exception'] = 'Caught exception: ' . $e->getMessage() . "\n";
-        }
-        
-        $data['viewLocation'] = 'consumer/createOfferSuccess';
-        $data['data'] = $data;
-        $this->load->view('dashboard/index', $data);
-    }
-
 }

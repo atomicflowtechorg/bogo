@@ -13,23 +13,23 @@ else{
 ?>
 <div class="masonry">
     <?php
-    foreach ($offers as $offer) {
+    foreach ($deals as $deal) {
             
             $url;
-            if($offer->item->userInCohort == 0){
+            if($deal->item->userInCohort == 0){
                 //see cohorts for item (or create one if none exist)
-                $url = site_url('offers/'. $offer->campaignId);
+                $url = site_url('deals/'. $deal->dealId);
             }
             else{
                 //see the users cohort for this item
-                $url = site_url('offers/cohort/'. $offer->cohortId);
+                $url = site_url('deals/cohort/'. $deal->cohortId);
             }
         ?>
         <div class="masonry-brick span2  ">
             <div class="vendor-item">
-                <h3><a href="<?php echo $url; ?>"><?php echo $offer->item->name; ?></a></h3>
-                <span><?php echo $offer->item->initPrice . ' ' . $offer->item->basePrice; ?></span>
-                <span><?php echo $offer->item->totalQty . ' ' . $offer->item->currentQty; ?></span>
+                <h3><a href="<?php echo $url; ?>"><?php echo $deal->item->name; ?></a></h3>
+                <span><?php echo $deal->item->initPrice . ' ' . $deal->item->basePrice; ?></span>
+                <span><?php echo $deal->item->totalQty . ' ' . $deal->item->currentQty; ?></span>
             </div>
         </div>
         <?php

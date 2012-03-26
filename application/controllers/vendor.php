@@ -59,9 +59,9 @@ class Vendor extends CI_Controller {
         }
     }
 
-    public function create_campaign($itemId) {
+    public function create_deal($itemId) {
         $this->load->model('itemmodel');
-        $this->load->model('offer');
+        $this->load->model('deal');
 
         $this->load->helper(array('form', 'file'));
 
@@ -74,19 +74,19 @@ class Vendor extends CI_Controller {
         $this->form_validation->set_rules('endDate', 'End Date', 'trim|required|xss_clean');
         $data['item'] = $this->itemmodel->get_item($itemId);
         if ($this->form_validation->run() == FALSE) {
-            $data['viewLocation'] = 'vendor/campaign/create';
+            $data['viewLocation'] = 'vendor/deal/create';
             $data['data'] = $data;
             $this->load->view('dashboard/index', $data);
         } else {
             try {
-                $data['campaign'] = $this->offer->create_campaign($itemId);
+                $data['deal'] = $this->deal->create_deal($itemId);
             } catch (Exception $e) {
                 $data['exception'] = 'Caught exception: ' . $e->getMessage() . "\n";
             }
 
 
 
-            $data['viewLocation'] = 'vendor/campaign/createSubmit';
+            $data['viewLocation'] = 'vendor/deal/createSubmit';
             $data['data'] = $data;
             $this->load->view('dashboard/index', $data);
         }

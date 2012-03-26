@@ -84,6 +84,9 @@ class vendorModel extends CI_Model{
                         INNER JOIN tblLocation ON tblLocation.pkLocationId = tblVendorLocation.fkLocationId";
         $query = $this->db->query($queryString);
         $vendors_all = array();
+        if($query->num_rows() < 1){
+            throw new exception("no vendors");
+        }
         foreach($query->result()  as $vendor){
             $vendorObject = new vendorModel();
             $vendorObject->id = $vendor->pkVendorId;
@@ -101,7 +104,7 @@ class vendorModel extends CI_Model{
         throw new exception("not implemented");
     }
     
-    function create_offer_vendor($itemId){
+    function create_deal_vendor($itemId){
         throw new exception("not implemented");
     }
 }

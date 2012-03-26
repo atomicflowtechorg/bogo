@@ -15,7 +15,7 @@ if (!isset($session['logged_in']) || $session['logged_in'] == false) {
     <html>
         <head>
             <meta charset="utf-8">
-            <title>Consumer Home</title>
+            <title>user Home</title>
             <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.css">
             <link rel="stylesheet" type="text/css" href="/assets/css/supersized.core.css">
             <link rel="stylesheet" type="text/css" href="/assets/css/styles.css">
@@ -55,11 +55,11 @@ if (!isset($session['logged_in']) || $session['logged_in'] == false) {
 
                             <li class="dropdown">
                                 <a href="#"class="dropdown-toggle"data-toggle="dropdown">
-                                    Offers <b class="caret"></b>
+                                    deals <b class="caret"></b>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li>
-                                            <a href="<?php echo site_url('offers'); ?>">View Offers</a>
+                                            <a href="<?php echo site_url('deals'); ?>">View deals</a>
                                     </li>
                                     <li>
                                             <a href="<?php echo site_url('vendors'); ?>">View Vendors</a>

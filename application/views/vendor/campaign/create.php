@@ -1,7 +1,7 @@
-<h1>Create Campaign for <?php echo $item->name; ?></h1>
+<h1>Create deal for <?php echo $item->name; ?></h1>
 <?php
 echo validation_errors();
-echo form_open(site_url('vendor/create/campaign/'.$item->itemId));
+echo form_open(site_url('vendor/create/deal/'.$item->itemId));
 
 $item = array(
               'name'        => 'item',

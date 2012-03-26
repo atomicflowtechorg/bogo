@@ -16,12 +16,12 @@ class Authentication extends CI_Controller {
         
     }
 
-    public function signup_consumer() {
+    public function signup_user() {
         $this->load->helper(array('form', 'file'));
 
         $this->load->library('form_validation');
 
-        $this->load->model('consumer');
+        $this->load->model('user');
         $this->load->model('vendorModel');
         $this->form_validation->set_rules('username', 'Username', 'trim|required|xss_clean');
         $this->form_validation->set_rules('password', 'Password', 'trim|required|matches[passwordConfirm]|md5');
@@ -38,55 +38,55 @@ class Authentication extends CI_Controller {
         $data['cities'] = $this->vendorModel->get_vendor_cities_for_state($data['states'][0]);
 
         if ($this->form_validation->run() == FALSE) {
-            $data['viewLocation'] = 'authentication/consumer/register';
+            $data['viewLocation'] = 'authentication/user/register';
             $data['data'] = $data;
             $this->load->view('dashboard/index', $data);
         } else {
             try {
-                $data['consumer'] = $this->consumer->create_consumer();
+                $data['user'] = $this->user->create_user();
             } catch (Exception $e) {
                 $data['exception'] = 'Caught exception: ' . $e->getMessage() . "\n";
             }
 
-            $data['viewLocation'] = 'authentication/consumer/registerSuccess';
+            $data['viewLocation'] = 'authentication/user/registerSuccess';
             $data['data'] = $data;
             $this->load->view('dashboard/index', $data);
         }
     }
 
-    public function signin_consumer() {
+    public function signin_user() {
         $this->load->helper(array('form', 'file'));
 
         $this->load->library('form_validation');
 
-        $this->load->model('consumer');
+        $this->load->model('user');
 
         $this->form_validation->set_rules('username', 'Username', 'trim|required|xss_clean');
         $this->form_validation->set_rules('password', 'Password', 'trim|required|md5');
 
         if ($this->form_validation->run() == FALSE) {
-            $data['viewLocation'] = 'authentication/consumer/signin';
+            $data['viewLocation'] = 'authentication/user/signin';
             $data['data'] = $data;
             $this->load->view('dashboard/index', $data);
         } else {
             try {
-                $isAuthenticated = $this->consumer->signin_consumer();
+                $isAuthenticated = $this->user->signin_user();
             } catch (Exception $e) {
                 $data['exception'] = 'Caught exception: ' . $e->getMessage() . "\n";
             }
             if($data['exception'] == null){
-                redirect('/consumer', 'location');
+                redirect('/user', 'location');
             }
-            $data['viewLocation'] = 'authentication/consumer/signinSuccess';
+            $data['viewLocation'] = 'authentication/user/signinSuccess';
             $data['data'] = $data;
             $this->load->view('dashboard/index', $data);
         }
     }
 
-    public function signout_consumer() {
+    public function signout_user() {
         $this->session->unset_userdata('logged_in');
 
-        $data['viewLocation'] = 'authentication/consumer/signinSuccess';
+        $data['viewLocation'] = 'authentication/user/signinSuccess';
         $data['data'] = $data;
         $this->load->view('dashboard/index', $data);
     }
