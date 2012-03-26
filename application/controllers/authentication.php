@@ -42,7 +42,7 @@ class Authentication extends CI_Controller {
 
         if ($this->form_validation->run() == FALSE) {
             try{
-            if(isset($session['username']) || $session['logged_in'] == TRUE){
+            if(isset($session['logged_in'])){
                 throw new exception("already signed in.");
             }
             $data['viewLocation'] = 'authentication/user/register';
