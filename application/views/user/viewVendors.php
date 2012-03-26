@@ -1,4 +1,6 @@
-
+<?php 
+    print_r($vendors);
+?>
 
 <div class="vendorCard">
     <div class="vendorDetailsContainer">

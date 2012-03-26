@@ -126,12 +126,12 @@ class userModel extends CI_Model {
             return false;
         }
     }
-    
-    function get_vendors(){
+
+    function get_vendors() {
         $this->load->model('vendorModel');
-        
+
         $session = $this->session->all_userdata();
-        
+
         $this->db->trans_start();
         /*
          * Get Vendors
@@ -142,7 +142,7 @@ class userModel extends CI_Model {
                         INNER JOIN tblLocation ON tblLocation.pkLocationId = tblVendorLocation.fkLocationId";
         $query = $this->db->query($queryString);
         $vendors_all = array();
-        foreach($query->result()  as $vendor){
+        foreach ($query->result() as $vendor) {
             $vendorObject = new vendorModel();
             $vendorObject->id = $vendor->pkVendorId;
             $vendorObject->name = $vendor->fldName;
@@ -155,20 +155,19 @@ class userModel extends CI_Model {
         /*
          * Get the points a user has for vendors
          */
-        $queryString = "SELECT fkVendorId, fldKarrrma FROM tblUserVendor WHERE fkUsername = '".$session['username']."'";
+        $queryString = "SELECT fkVendorId, fldKarrrma FROM tblUserVendor WHERE fkUsername = '" . $session['username'] . "'";
         $query = $this->db->query($queryString);
-        foreach($query->result()  as $vendorPoints){
-            foreach($vendors_all as $vendor){
-                if($vendorPoints->fkVendorId == $vendor->id){
+        foreach ($vendors_all as $vendor) {
+            $vendor->karrrma = 0;
+            foreach ($query->result() as $vendorPoints) {
+                if ($vendorPoints->fkVendorId == $vendor->id) {
                     $vendor->karrrma = $vendorPoints->fldKarrrma;
-                }
-                else{
-                    $vendor->karrrma = 0;
                 }
             }
         }
         $this->db->trans_complete();
-        
+
         return $vendors_all;
     }
+
 }
