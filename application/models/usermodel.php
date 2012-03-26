@@ -10,7 +10,7 @@
  *
  * @author lpaulger
  */
-class user extends CI_Model {
+class userModel extends CI_Model {
 
     var $username = '';
     var $password = '';
@@ -126,5 +126,49 @@ class user extends CI_Model {
             return false;
         }
     }
-
+    
+    function get_vendors(){
+        $this->load->model('vendorModel');
+        
+        $session = $this->session->all_userdata();
+        
+        $this->db->trans_start();
+        /*
+         * Get Vendors
+         */
+        $queryString = "SELECT pkVendorId, fldName, fldStreetAddress, fldCity, fldState, fldZipCode
+                        FROM tblVendor
+                        INNER JOIN tblVendorLocation ON tblVendor.pkVendorId = tblVendorLocation.fkVendorId
+                        INNER JOIN tblLocation ON tblLocation.pkLocationId = tblVendorLocation.fkLocationId";
+        $query = $this->db->query($queryString);
+        $vendors_all = array();
+        foreach($query->result()  as $vendor){
+            $vendorObject = new vendorModel();
+            $vendorObject->id = $vendor->pkVendorId;
+            $vendorObject->name = $vendor->fldName;
+            $vendorObject->streetAddress = $vendor->fldStreetAddress;
+            $vendorObject->city = $vendor->fldCity;
+            $vendorObject->state = $vendor->fldState;
+            $vendorObject->zipcode = $vendor->fldZipCode;
+            array_push($vendors_all, $vendorObject);
+        }
+        /*
+         * Get the points a user has for vendors
+         */
+        $queryString = "SELECT fkVendorId, fldKarrrma FROM tblUserVendor WHERE fkUsername = '".$session['username']."'";
+        $query = $this->db->query($queryString);
+        foreach($query->result()  as $vendorPoints){
+            foreach($vendors_all as $vendor){
+                if($vendorPoints->fkVendorId == $vendor->id){
+                    $vendor->karrrma = $vendorPoints->fldKarrrma;
+                }
+                else{
+                    $vendor->karrrma = 0;
+                }
+            }
+        }
+        $this->db->trans_complete();
+        
+        return $vendors_all;
+    }
 }

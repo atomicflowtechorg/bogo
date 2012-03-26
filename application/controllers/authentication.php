@@ -21,7 +21,7 @@ class Authentication extends CI_Controller {
 
         $this->load->library('form_validation');
         
-        $this->load->model('user');
+        $this->load->model('userModel');
         $this->load->model('vendorModel');
         
         $session = $this->session->all_userdata();
@@ -57,7 +57,7 @@ class Authentication extends CI_Controller {
             }
         } else {
             try {
-                $data['user'] = $this->user->create_user();
+                $data['user'] = $this->userModel->create_user();
             } catch (Exception $e) {
                 $data['exception'] = 'Caught exception: ' . $e->getMessage() . "\n";
             }
@@ -73,7 +73,7 @@ class Authentication extends CI_Controller {
 
         $this->load->library('form_validation');
 
-        $this->load->model('user');
+        $this->load->model('userModel');
 
         $this->form_validation->set_rules('username', 'Username', 'trim|required|xss_clean');
         $this->form_validation->set_rules('password', 'Password', 'trim|required|md5');
@@ -84,7 +84,7 @@ class Authentication extends CI_Controller {
             $this->load->view('dashboard/index', $data);
         } else {
             try {
-                $isAuthenticated = $this->user->signin_user();
+                $isAuthenticated = $this->userModel->signin_user();
             } catch (Exception $e) {
                 $data['exception'] = 'Caught exception: ' . $e->getMessage() . "\n";
             }

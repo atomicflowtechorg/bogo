@@ -35,15 +35,16 @@ class user extends CI_Controller {
 
     //View Vendors for user
     public function view_vendors() {
-        $this->load->model('vendorModel');
-        $this->load->model('itemmodel');
-        $this->load->model('deal');
+        $this->load->model('userModel');
         
         $data = array();
 
         try {
-            $data['vendors'] = $this->vendorModel->get_all_vendors();
-            $data['currentVendor'] = $this->vendorModel->get_vendor($data['vendors'][0]->id);
+            $session = $this->session->all_userdata();
+            if(!isset($session['username']) || (!isset($session['logged_in']) || $session['logged_in'] == false)){
+                throw new exception("user must be logged in");
+            }
+            $data['vendors'] = $this->userModel->get_vendors();
         } catch (Exception $e) {
             $data['exception'] = 'Caught exception: ' . $e->getMessage() . "\n";
         }
