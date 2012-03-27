@@ -48,6 +48,7 @@ $route['vendor/create/deal/(:num)'] = 'vendor/create_deal/$1';
 $route['deals'] = 'user';
 $route['deals/(:num)'] = 'deal/view_deal/$1';
 $route['vendors'] = 'user/view_vendors';
+$route['dashboard'] = 'user/view_dashboard';
 
 $route['404_override'] = '';
 

@@ -42,14 +42,14 @@ if (!isset($session['logged_in']) || $session['logged_in'] == false) {
 
             <div class="navbar navbar-fixed-top">
                 <div class="navbar-inner">
-                    <div class="container">
+                    <div class="container-fluid">
                         <a href="/" class="brand">BoGo</a>
                         <ul class="nav">
                             <li class="active">
                                 <a href="/">Home</a>
                             </li>
                             <li>
-                                <a href="#">Groups</a>
+                                <a href="<?php echo site_url('dashboard'); ?>">Dashboard</a>
                             </li>
 
                             <li class="dropdown">

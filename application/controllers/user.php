@@ -52,4 +52,23 @@ class user extends CI_Controller {
         $data['data'] = $data;
         $this->load->view('dashboard/index', $data);
     }
+
+     public function view_dashboard() {
+        $this->load->model('userModel');
+        
+        $data = array();
+
+        try {
+            $session = $this->session->all_userdata();
+            if(!isset($session['username']) || (!isset($session['logged_in']) || $session['logged_in'] == false)){
+                throw new exception("user must be logged in");
+            }
+            $data['vendors'] = $this->userModel->get_vendors();
+        } catch (Exception $e) {
+            $data['exception'] = 'Caught exception: ' . $e->getMessage() . "\n";
+        }
+        $data['viewLocation'] = 'user/viewDashboard';
+        $data['data'] = $data;
+        $this->load->view('dashboard/index', $data);
+    }
 }
