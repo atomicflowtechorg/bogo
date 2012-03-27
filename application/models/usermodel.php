@@ -155,13 +155,13 @@ class userModel extends CI_Model {
         /*
          * Get the points a user has for vendors
          */
-        $queryString = "SELECT fkVendorId, fldKarrrma FROM tblUserVendor WHERE fkUsername = '" . $session['username'] . "'";
+        $queryString = "SELECT fkVendorId, fldkarma FROM tblUserVendor WHERE fkUsername = '" . $session['username'] . "'";
         $query = $this->db->query($queryString);
         foreach ($vendors_all as $vendor) {
-            $vendor->karrrma = 0;
+            $vendor->karma = 0;
             foreach ($query->result() as $vendorPoints) {
                 if ($vendorPoints->fkVendorId == $vendor->id) {
-                    $vendor->karrrma = $vendorPoints->fldKarrrma;
+                    $vendor->karma = $vendorPoints->fldkarma;
                 }
             }
         }

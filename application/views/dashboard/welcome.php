@@ -5,9 +5,9 @@ if(isset($data['exception'])){
 ?>
 <!-- Dashboard/Welcome -->
 <div class="hero-unit">
-    <h1>Welcome to Karrrma.</h1>
+    <h1>Welcome to karma.</h1>
     <p>
-        Karrrma is an deal service that provides a fun and exciting experience, allowing you to exchange good deeds for great discounts on the items and services you love. The more you share, the more you save! Sound exciting?
+        karma is an deal service that provides a fun and exciting experience, allowing you to exchange good deeds for great discounts on the items and services you love. The more you share, the more you save! Sound exciting?
     </p>
     <p>
         <a class="btn btn-primary btn-large" href="<?php echo site_url('signup'); ?>">Get Started! &raquo;</a>

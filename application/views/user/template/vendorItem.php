@@ -7,6 +7,6 @@
         <h3 class='vcVendorName'><?php echo $name; ?></h3>
     </div>
     <div class='karmaIndicatorContainer'>
-        <div class='karmaIndicator'><span class='karmaPoints'><?php echo $karrrma; ?></span></div>
+        <div class='karmaIndicator'><span class='karmaPoints'><?php echo $karma; ?></span></div>
     </div>
 </div>

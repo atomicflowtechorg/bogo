@@ -6,7 +6,7 @@
             <div class="row" id="signinRow">
 
                 <div class="span4 well" id="signinFormAside">
-                    <div class="message"> <b>Karrrma</b>
+                    <div class="message"> <b>karma</b>
                         allows you to exchange <b>good deeds</b>
                         for
                         <b>great discounts</b>
