@@ -23,7 +23,7 @@ jQuery(function($){
 				$(".moreTriangle").click(function(){
 
 
-				$(".vendorNameContainer").animate({
+				$(this).closest(".vendorNameContainer").animate({
     marginTop: '+=248',
   }, 1000, function() {
     // Animation complete.
