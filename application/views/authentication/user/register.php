@@ -1,4 +1,4 @@
-<!-- Dashboard/Welcome -->
+<!-- welcome -->
 <div class="row">
     <?php echo validation_errors(); ?>
     <form method="post" action="<?php echo site_url('signup') ?>" class="form-horizontal well">

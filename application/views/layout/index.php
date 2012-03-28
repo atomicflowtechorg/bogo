@@ -1,7 +1,7 @@
 <?php
 $nav = array();
 $session = $this->session->all_userdata();
-if (!isset($session['logged_in']) || $session['logged_in'] == false) {
+if (!isset($session['logged_in'])) {
     $nav['nav_account'] = site_url('signin');
     //potentially this line below and the partner line below are causing slow loadtimes.
     $nav['nav_LogInOutText'] = "Sign-In";
@@ -9,7 +9,7 @@ if (!isset($session['logged_in']) || $session['logged_in'] == false) {
     $nav['nav_account'] = site_url('signout');
     $nav['nav_LogInOutText'] = "Sign-Out";
 }
-?><!-- Dashbord/Index -->
+?><!-- Layout/Index -->
 <html>
     <head>
         <meta charset="utf-8">
@@ -49,7 +49,7 @@ if (!isset($session['logged_in']) || $session['logged_in'] == false) {
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="<?php echo site_url('deals'); ?>">View deals</a>
+                                    <a href="<?php echo site_url('deals'); ?>">View Deals</a>
                                 </li>
                                 <li>
                                     <a href="<?php echo site_url('vendors'); ?>">View Vendors</a>
@@ -63,7 +63,7 @@ if (!isset($session['logged_in']) || $session['logged_in'] == false) {
                             <a href="#"class="dropdown-toggle"data-toggle="dropdown">
                                 <?php
                                 if (!isset($session['logged_in'])) {
-                                    echo"Account";
+                                    echo "Account";
                                 } else {
                                     echo $session['username'];
                                 }

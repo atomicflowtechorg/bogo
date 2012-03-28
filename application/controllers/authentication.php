@@ -51,7 +51,7 @@ class Authentication extends CI_Controller {
             }
             catch(Exception $e){
                 $data['exception'] = 'Caught exception: ' . $e->getMessage() . "\n";
-                $data['viewLocation'] = 'dashboard/welcome';
+                $data['viewLocation'] = 'welcome';
                 $data['data'] = $data;
                 $this->load->view('layout/index', $data);
             }

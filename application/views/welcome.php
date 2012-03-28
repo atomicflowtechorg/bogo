@@ -3,7 +3,7 @@ if(isset($data['exception'])){
     echo $data['exception'];
 }
 ?>
-<!-- Dashboard/Welcome -->
+<!-- welcome -->
 <div class="hero-unit">
     <h1>Welcome to karma.</h1>
     <p>
