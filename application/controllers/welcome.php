@@ -6,11 +6,11 @@
  */
 
 /**
- * Description of dashboard
+ * Description of welcome
  *
  * @author lpaulger
  */
-class Dashboard extends CI_Controller {
+class Welcome extends CI_Controller {
 
     public function index() {
         $this->load->model('deal');
@@ -21,16 +21,15 @@ class Dashboard extends CI_Controller {
 //       $data['deals'] = $this->deal->deal_get_current();
 
         try {
-            //$data['items'] = $this->itemmodel->get_all_items();
             $data['vendors'] = $this->vendorModel->get_all_vendors();
             $data['currentVendor'] = $this->vendorModel->get_vendor($data['vendors'][0]->id);
         } catch (Exception $e) {
             $data['exception'] = 'Caught exception: ' . $e->getMessage() . "\n";
         }
 
-        $data['viewLocation'] = 'dashboard/welcome';
+        $data['viewLocation'] = 'welcome';
         $data['data'] = $data;
-        $this->load->view('dashboard/index', $data);
+        $this->load->view('layout/index', $data);
     }
 
 }

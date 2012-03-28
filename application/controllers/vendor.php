@@ -27,7 +27,7 @@ class Vendor extends CI_Controller {
 
         $data['viewLocation'] = 'vendor/dashboard';
         $data['data'] = $data;
-        $this->load->view('dashboard/index', $data);
+        $this->load->view('layout/index', $data);
     }
 
     public function add_item() {
@@ -49,13 +49,13 @@ class Vendor extends CI_Controller {
         if ($this->form_validation->run() == FALSE) {
             $data['viewLocation'] = 'vendor/addItem';
             $data['data'] = $data;
-            $this->load->view('dashboard/index', $data);
+            $this->load->view('layout/index', $data);
         } else {
             $data['item'] = $this->itemmodel->add_item();
             $data['items'] = $this->itemmodel->get_items_for_vendor($vendorId);
             $data['viewLocation'] = 'vendor/addItemSuccess';
             $data['data'] = $data;
-            $this->load->view('dashboard/index', $data);
+            $this->load->view('layout/index', $data);
         }
     }
 
@@ -76,7 +76,7 @@ class Vendor extends CI_Controller {
         if ($this->form_validation->run() == FALSE) {
             $data['viewLocation'] = 'vendor/deal/create';
             $data['data'] = $data;
-            $this->load->view('dashboard/index', $data);
+            $this->load->view('layout/index', $data);
         } else {
             try {
                 $data['deal'] = $this->deal->create_deal($itemId);
@@ -88,7 +88,7 @@ class Vendor extends CI_Controller {
 
             $data['viewLocation'] = 'vendor/deal/createSubmit';
             $data['data'] = $data;
-            $this->load->view('dashboard/index', $data);
+            $this->load->view('layout/index', $data);
         }
     }
 

@@ -25,6 +25,6 @@ class deal extends CI_Controller {
         
         $data['viewLocation'] = 'template/item/details';
         $data['data'] = $data;
-        $this->load->view('dashboard/index', $data);
+        $this->load->view('layout/index', $data);
     }
 }

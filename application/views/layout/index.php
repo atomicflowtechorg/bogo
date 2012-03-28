@@ -73,7 +73,7 @@ if (!isset($session['logged_in']) || $session['logged_in'] == false) {
                             <li class="dropdown">
                                 <a href="#"class="dropdown-toggle"data-toggle="dropdown">
                                 <?php
-                                if (!isset($session['logged_in']) || $session['logged_in'] == false) {echo"Account";}
+                                if (!isset($session['logged_in'])) {echo"Account";}
                                 else {echo $session['username'];}
                                 ?> 
                                 <b class="caret"></b>

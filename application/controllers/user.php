@@ -30,7 +30,7 @@ class user extends CI_Controller {
         }
         $data['viewLocation'] = 'user/currentDeals';
         $data['data'] = $data;
-        $this->load->view('dashboard/index', $data);
+        $this->load->view('layout/index', $data);
     }
 
     //View Vendors for user
@@ -50,7 +50,7 @@ class user extends CI_Controller {
         }
         $data['viewLocation'] = 'user/viewVendors';
         $data['data'] = $data;
-        $this->load->view('dashboard/index', $data);
+        $this->load->view('layout/index', $data);
     }
 
      public function view_dashboard() {
@@ -59,7 +59,7 @@ class user extends CI_Controller {
         $data = array();
 
         try {
-            $session = $this->session->all_userdata();
+            $data['session'] = $session = $this->session->all_userdata();
             if(!isset($session['username']) || (!isset($session['logged_in']) || $session['logged_in'] == false)){
                 throw new exception("user must be logged in");
             }
@@ -69,6 +69,6 @@ class user extends CI_Controller {
         }
         $data['viewLocation'] = 'user/viewDashboard';
         $data['data'] = $data;
-        $this->load->view('dashboard/index', $data);
+        $this->load->view('layout/index', $data);
     }
 }

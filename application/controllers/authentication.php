@@ -47,13 +47,13 @@ class Authentication extends CI_Controller {
             }
             $data['viewLocation'] = 'authentication/user/register';
             $data['data'] = $data;
-            $this->load->view('dashboard/index', $data);
+            $this->load->view('layout/index', $data);
             }
             catch(Exception $e){
                 $data['exception'] = 'Caught exception: ' . $e->getMessage() . "\n";
                 $data['viewLocation'] = 'dashboard/welcome';
                 $data['data'] = $data;
-                $this->load->view('dashboard/index', $data);
+                $this->load->view('layout/index', $data);
             }
         } else {
             try {
@@ -64,7 +64,7 @@ class Authentication extends CI_Controller {
 
             $data['viewLocation'] = 'authentication/user/registerSuccess';
             $data['data'] = $data;
-            $this->load->view('dashboard/index', $data);
+            $this->load->view('layout/index', $data);
         }
     }
 
@@ -81,7 +81,7 @@ class Authentication extends CI_Controller {
         if ($this->form_validation->run() == FALSE) {
             $data['viewLocation'] = 'authentication/user/signin';
             $data['data'] = $data;
-            $this->load->view('dashboard/index', $data);
+            $this->load->view('layout/index', $data);
         } else {
             try {
                 $isAuthenticated = $this->userModel->signin_user();
@@ -93,7 +93,7 @@ class Authentication extends CI_Controller {
             }
             $data['viewLocation'] = 'authentication/user/signinSuccess';
             $data['data'] = $data;
-            $this->load->view('dashboard/index', $data);
+            $this->load->view('layout/index', $data);
         }
     }
 
@@ -102,7 +102,7 @@ class Authentication extends CI_Controller {
 
         $data['viewLocation'] = 'authentication/user/signinSuccess';
         $data['data'] = $data;
-        $this->load->view('dashboard/index', $data);
+        $this->load->view('layout/index', $data);
     }
 
 }

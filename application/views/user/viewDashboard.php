@@ -1,5 +1,5 @@
 <?php 
-var_dump($session);
+    print_r($session);
  ?>
 
 <div class="tabbable">

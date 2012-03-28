@@ -38,7 +38,7 @@
 |
 */
 
-$route['default_controller'] = "dashboard";
+$route['default_controller'] = "welcome";
 $route['signup'] = 'authentication/signup_user';
 $route['signin'] = 'authentication/signin_user';
 $route['signout'] = 'authentication/signout_user';
