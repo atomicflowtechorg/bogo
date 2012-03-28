@@ -41,7 +41,7 @@ class user extends CI_Controller {
 
         try {
             $session = $this->session->all_userdata();
-            if(!isset($session['username']) || (!isset($session['logged_in']) || $session['logged_in'] == false)){
+            if(!isset($session['username']) || (!isset($session['logged_in']))){
                 throw new exception("user must be logged in");
             }
             $data['vendors'] = $this->userModel->get_vendors();
@@ -60,7 +60,7 @@ class user extends CI_Controller {
 
         try {
             $data['session'] = $session = $this->session->all_userdata();
-            if(!isset($session['username']) || (!isset($session['logged_in']) || $session['logged_in'] == false)){
+            if(!isset($session['username']) || (!isset($session['logged_in']))){
                 throw new exception("user must be logged in");
             }
             $data['vendors'] = $this->userModel->get_vendors();
