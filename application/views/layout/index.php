@@ -24,10 +24,10 @@ if (!isset($session['logged_in'])) {
         <script type="text/javascript" src="/assets/font/Exo-Regular_400-Exo-Regular_700-Exo-Regular_italic_400-Exo-Regular_italic_700.font.js"></script>
         <script type="text/javascript" src="/assets/js/jquery.masonry.min.js"></script>
 
-        <?php if (!isset($session['logged_in']) || $session['logged_in'] == false): true ?>
+       <!--  <?php if (!isset($session['logged_in']) || $session['logged_in'] == false): true ?>
             <?php echo "<script type='text/javascript' src='/assets/js/supersized.core.3.2.1.min.js'></script>" ?>
             <?php echo "<script type='text/javascript' src='/assets/js/loggedOut.js'></script>" ?>
-        <?php endif ?> 
+        <?php endif ?> --> 
         <script type="text/javascript" src="/assets/js/starter.js"></script>
     </head>
     <body>
