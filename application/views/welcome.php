@@ -11,10 +11,10 @@ if(isset($data['exception'])){
     </p>
 </div> -->
 
-<div class="row-fluid">
+<div class="row">
 
-    <div id="betaTestingContainer" class="span6">
-    Testing    
+    <div id="betaTestingContainer" class="span6 pull-right">
+   Karrrma is an deal service that provides a fun and exciting experience, allowing you to exchange good deeds for great discounts on the items and services you love. The more you share, the more you save! Sound exciting?
     </div>
 
     <div id="welcomeContainer" class="pull-right">
@@ -49,5 +49,3 @@ if(isset($data['exception'])){
 
 
 
-<!-- karma is an deal service that provides a fun and exciting experience, allowing you to exchange good deeds for great discounts on the items and services you love. The more you share, the more you save! Sound exciting?
- -->

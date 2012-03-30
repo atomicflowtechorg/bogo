@@ -83,13 +83,13 @@ display: none;
 
 .navbar-inner{
 	/*background: #fff url("/assets/image/nav_bar.png");*/
-    background: #000;
+    background: #0F0F0F;
   
 
 }
 .navbar{
     padding-left:20px;
-     background: #000;
+     background: #0F0F0F;
 }
 
 legend{
@@ -251,9 +251,16 @@ height:70px;
 
 }
 #betaTestingContainer{
-  background-color: #fefefe;
+/*  background-color: #fefefe;
   border-top: 8px solid #333;
-  border-bottom: 8px solid #333;
-  height:410px;
+  border-bottom: 8px solid #333;*/
+  background: url("/assets/image/background/betaThingsAndStuffBorder.png") no-repeat;
+  height:425px;
   margin-top:104px;
+  width:423px;
+  display: none;
+
+}
+#welcomeRow{
+
 }
