@@ -82,7 +82,14 @@ display: none;
 }
 
 .navbar-inner{
-	background: #fff url("/assets/image/nav_bar.png");
+	/*background: #fff url("/assets/image/nav_bar.png");*/
+    background: #000;
+  
+
+}
+.navbar{
+    padding-left:20px;
+     background: #000;
 }
 
 legend{
@@ -109,7 +116,7 @@ form{
 }
 
 .navbar .brand{
-	background: url("/assets/image/logo/karrrmaWordmark.png") no-repeat; 
+	background: url("/assets/image/logo/karrrmaWordmarkBlue.png") no-repeat; 
 	position: relative;
 	width: 120px;
 	height:10px;
@@ -219,4 +226,34 @@ height:70px;
 .dashboardPanel{
   height:400px;
   background-color:red;
+}
+
+#welcomeContainer{
+  background: url("/assets/image/background/loginBG.png") no-repeat;
+  width:500px;
+  height:533px;
+  margin-right:-20px;
+}
+
+#welcomeWords{
+  height: 163px;
+  width:379px;
+  background: url("/assets/image/background/welcomeWords.png");
+  display: block;
+  margin:0 auto;
+  margin-top: 105px;
+
+}
+
+#loginForm{
+ margin-left:62px;
+ margin-top:40px;
+
+}
+#betaTestingContainer{
+  background-color: #fefefe;
+  border-top: 8px solid #333;
+  border-bottom: 8px solid #333;
+  height:410px;
+  margin-top:104px;
 }

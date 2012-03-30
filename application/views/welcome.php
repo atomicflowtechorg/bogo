@@ -4,44 +4,50 @@ if(isset($data['exception'])){
 }
 ?>
 <!-- welcome -->
-<div class="hero-unit">
-    <h1>Welcome to karma.</h1>
-    <p>
-        karma is an deal service that provides a fun and exciting experience, allowing you to exchange good deeds for great discounts on the items and services you love. The more you share, the more you save! Sound exciting?
-    </p>
+<!-- <div class="hero-unit span3">
+    <h1>Welcome to Karrrma.</h1>
     <p>
         <a class="btn btn-primary btn-large" href="<?php echo site_url('signup'); ?>">Get Started! &raquo;</a>
     </p>
-</div>
+</div> -->
 
 <div class="row-fluid">
-    <div class="span4">
-        <h2>Browse deals</h2>
-        <p>
-            Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-        </p>
-        <p>
-            <a class="btn" href="<?php echo site_url('deals'); ?>">View Current Deals &raquo;</a>
-        </p>
+
+    <div id="betaTestingContainer" class="span6">
+    Testing    
     </div>
-    <div class="span4">
-        <h2>Learn More</h2>
-        <p>
-            Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-        </p>
-        <p>
-            <a class="btn" href="#">Tell Me More &raquo;</a>
-        </p>
-    </div>
-    <div class="span4">
-        <h2>Get Started!</h2>
-        <p>
-            Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
-        </p>
-        <p>
-            <a class="btn" href="<?php echo site_url('signup'); ?>">Sign Up &raquo;</a>
-        </p>
+
+    <div id="welcomeContainer" class="pull-right">
+        <span id="welcomeWords"></span>
+
+<form id="loginForm" method="post" action="<?php echo site_url('signin') ?>" class="form-horizontal pull-left ">
+                        <fieldset>
+                           <!--  <legend>Member Sign In</legend> -->
+                            <div class="control-group">
+                                <label>Username</label>
+                                <input type="text" id="username" name="username" class="span4" placeholder="Enter E-mail or Username..."/>
+                            </div>
+
+                            <div class="control-group">
+                                <label>Password</label>
+                                <input type="password" id="password" name="password" class="span4" placeholder="Password..."/>
+                            </div>
+                        </fieldset>
+                        <div class="control-group">
+                            <div class="row">
+                                <button type="submit" class="btn btn-primary span2"> <i class="icon-user icon-white"></i>
+                                    Login
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
     </div>
 </div>
 
-<hr>
+
+
+
+
+<!-- karma is an deal service that provides a fun and exciting experience, allowing you to exchange good deeds for great discounts on the items and services you love. The more you share, the more you save! Sound exciting?
+ -->
