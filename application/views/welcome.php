@@ -38,7 +38,7 @@ if (isset($data['exception'])) {
                     <button type="submit" class="btn btn-primary span2"> <i class="icon-user icon-white"></i>
                         Login
                     </button>
-                    <a href="<?php echo site_url('signup'); ?>" type="button" class="btn btn-primary signupButton pull-right"> <i class="icon-heart icon-white"></i>
+                    <a href="<?php echo site_url('signup'); ?>" type="button" class="btn btn-danger signupButton pull-right"> <i class="icon-heart icon-white"></i>
                         Sign Up
                     </a>
                 </div>
