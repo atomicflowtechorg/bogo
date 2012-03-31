@@ -1,7 +1,9 @@
+
+<!DOCTYPE html>
+<html>
 <?php
 $session = $this->session->all_userdata();
 ?>
-<html>
     <head>
         <meta charset="utf-8">
         <title><?php echo $pageTitle; ?></title>

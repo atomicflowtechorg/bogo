@@ -8,8 +8,14 @@
 
 <div class="row">
 
-    <div id="betaTestingContainer" class="span6">
-        Karrrma is an deal service that provides a fun and exciting experience, allowing you to exchange good deeds for great discounts on the items and services you love. The more you share, the more you save! Sound exciting?
+    <div id="betaTestingContainer" class="span6 well alert alert-info">
+        <a class="close" data-dismiss="alert">×</a>
+        <h3>
+            <p class="alert alert-info">Alpha Testing Things and Stuff</p>
+        </h3>
+        <p><span class="strong">Karrrma</span> is an deal service that provides a fun and exciting experience, allowing you to exchange good deeds for great discounts on the items and services you love. The more you share, the more you save! </p>
+
+        <a href="https://github.com/atomicflowtech/bogo" class="btn btn-primary">View our code on GitHub</a>
     </div>
 
     <div id="welcomeContainer" class="pull-right">
