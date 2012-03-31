@@ -254,11 +254,11 @@ height:70px;
 /*  background-color: #fefefe;
   border-top: 8px solid #333;
   border-bottom: 8px solid #333;*/
-  background: url("/assets/image/background/betaThingsAndStuffBorder.png") no-repeat;
-  height:425px;
+  /*background: url("/assets/image/background/betaThingsAndStuffBorder.png") no-repeat;*/
+  /*height:425px;*/
   margin-top:104px;
-  width:423px;
-  display: none;
+  /*width:423px;*/
+  /*display: block;*/
 
 }
 #welcomeRow{

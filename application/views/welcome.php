@@ -13,7 +13,7 @@ if(isset($data['exception'])){
 
 <div class="row">
 
-    <div id="betaTestingContainer" class="span6 pull-right">
+    <div id="betaTestingContainer" class="span6">
    Karrrma is an deal service that provides a fun and exciting experience, allowing you to exchange good deeds for great discounts on the items and services you love. The more you share, the more you save! Sound exciting?
     </div>
 
@@ -38,6 +38,9 @@ if(isset($data['exception'])){
                                 <button type="submit" class="btn btn-primary span2"> <i class="icon-user icon-white"></i>
                                     Login
                                 </button>
+                                 <button type="button" class="btn btn-primary signupButton pull-right"> <i class="icon-heart icon-white"></i>
+                                Sign Up
+                            </button>
                             </div>
                         </div>
                     </form>
