@@ -1,8 +1,3 @@
-<?php
-if (isset($data['exception'])) {
-    echo $data['exception'];
-}
-?>
 <!-- welcome -->
 <!-- <div class="hero-unit span3">
     <h1>Welcome to Karrrma.</h1>
