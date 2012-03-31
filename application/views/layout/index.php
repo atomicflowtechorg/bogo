@@ -1,9 +1,9 @@
+<?php
+    $nav['session'] = $session = $this->session->all_userdata();
+?>
 
 <!DOCTYPE html>
 <html>
-<?php
-$session = $this->session->all_userdata();
-?>
     <head>
         <meta charset="utf-8">
         <title><?php echo $pageTitle; ?></title>
@@ -22,17 +22,16 @@ $session = $this->session->all_userdata();
         <script type="text/javascript" src="/assets/js/starter.js"></script>
     </head>
     <body>
-
         <div class="navbar navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container-fluid">
                     <a href="/" class="brand">Karrrma</a>
 
                     <?php
-                    if (!isset($session['logged_in'])) {
-                        $this->load->view('layout/template/loggedOutNavigation');
+                    if (isset($session['logged_in'])) {
+                        $this->load->view('layout/template/loggedInNavigation',$nav);
                     } else {
-                        $this->load->view('layout/template/loggedInNavigation');
+                        $this->load->view('layout/template/loggedOutNavigation');
                     }
                     ?>
                 </div>

@@ -1,11 +1,26 @@
+<?php
+    $current = $this->uri->segment(1);
+    $dashboard = $deals = $home = "";
+    switch($current){
+        case "dashboard": 
+            $dashboard = "class='active'";
+            break;
+        case "deals": 
+        case "vendors": 
+            $deals = "active";
+            break;
+        default:
+            $home = "class='active'";
+    }     
+?>
 <ul class="nav">
-    <li class="active">
+    <li <?php echo $home;?>>
         <a href="/">Home</a>
     </li>
-    <li>
+    <li <?php echo $dashboard;?>>
         <a href="<?php echo site_url('dashboard'); ?>">Dashboard</a>
     </li>
-    <li class="dropdown">
+    <li class="dropdown <?php echo $deals;?>">
         <a href="#"class="dropdown-toggle"data-toggle="dropdown">
             Deals <b class="caret"></b>
         </a>
@@ -23,14 +38,7 @@
     <li class="divider-vertical"></li>
     <li class="dropdown">
         <a href="#"class="dropdown-toggle"data-toggle="dropdown">
-            <?php
-            if (!isset($session['logged_in'])) {
-                echo "Account";
-            } else {
-                echo $session['username'];
-            }
-            ?> 
-            <b class="caret"></b>
+            <?php echo $session['username']; ?><b class="caret"></b>
         </a>
         <ul class="dropdown-menu">
             <li>
