@@ -1,5 +1,5 @@
 <?php
-    $session = $this->session->all_userdata();
+$session = $this->session->all_userdata();
 ?>
 <html>
     <head>
@@ -16,7 +16,7 @@
         <script type="text/javascript" src="/assets/js/jquery.masonry.min.js"></script>
         <!--<script type='text/javascript' src='/assets/js/supersized.core.3.2.1.min.js'></script>
         <script type='text/javascript' src='/assets/js/loggedOut.js'></script>-->
-      
+
         <script type="text/javascript" src="/assets/js/starter.js"></script>
     </head>
     <body>
@@ -27,7 +27,7 @@
                     <a href="/" class="brand">Karrrma</a>
 
                     <?php
-                    if (!isset($session['logged_in'])){
+                    if (!isset($session['logged_in'])) {
                         $this->load->view('layout/template/loggedOutNavigation');
                     } else {
                         $this->load->view('layout/template/loggedInNavigation');
@@ -36,10 +36,14 @@
                 </div>
             </div>
         </div>
-
+        <?php
+        if (isset($data['exception'])) {
+            $this->load->view('layout/template/exception', $data['exception']);
+        }
+        ?>
         <div class="container-fluid">
             <?php
-                $this->load->view($viewLocation, $data);
+            $this->load->view($viewLocation, $data);
             ?>
         </div><!-- /container -->
         <div class="footerContainer">

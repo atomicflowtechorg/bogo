@@ -1,16 +1,3 @@
-<?php
-if(isset($exception)){
-    echo $exception;
-    $items = array();
-}
-else{
-    
-}
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-?>
 <div class="masonry">
     <?php
     foreach ($deals as $deal) {
