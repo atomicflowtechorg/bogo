@@ -14,11 +14,9 @@
         <script type="text/javascript" src="/assets/font/cufon-yui.js"></script>
         <script type="text/javascript" src="/assets/font/Exo-Regular_400-Exo-Regular_700-Exo-Regular_italic_400-Exo-Regular_italic_700.font.js"></script>
         <script type="text/javascript" src="/assets/js/jquery.masonry.min.js"></script>
-
-        <?php if (!isset($session['logged_in'])){ ?>
-            <script type='text/javascript' src='/assets/js/supersized.core.3.2.1.min.js'></script>
-            <script type='text/javascript' src='/assets/js/loggedOut.js'></script>
-        <?php } ?>
+        <!--<script type='text/javascript' src='/assets/js/supersized.core.3.2.1.min.js'></script>
+        <script type='text/javascript' src='/assets/js/loggedOut.js'></script>-->
+      
         <script type="text/javascript" src="/assets/js/starter.js"></script>
     </head>
     <body>
