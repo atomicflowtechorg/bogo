@@ -29,6 +29,7 @@ class user extends CI_Controller {
             $data['exception'] = 'Caught exception: ' . $e->getMessage() . "\n";
         }
         $data['viewLocation'] = 'user/currentDeals';
+        $data['pageTitle'] = "Current Deals";
         $data['data'] = $data;
         $this->load->view('layout/index', $data);
     }
@@ -49,6 +50,7 @@ class user extends CI_Controller {
             $data['exception'] = 'Caught exception: ' . $e->getMessage() . "\n";
         }
         $data['viewLocation'] = 'user/viewVendors';
+        $data['pageTitle'] = "Vendors";
         $data['data'] = $data;
         $this->load->view('layout/index', $data);
     }
@@ -68,6 +70,7 @@ class user extends CI_Controller {
             $data['exception'] = 'Caught exception: ' . $e->getMessage() . "\n";
         }
         $data['viewLocation'] = 'user/viewDashboard';
+        $data['pageTitle'] = "Dashboard";
         $data['data'] = $data;
         $this->load->view('layout/index', $data);
     }

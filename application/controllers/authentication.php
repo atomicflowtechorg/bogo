@@ -100,9 +100,8 @@ class Authentication extends CI_Controller {
     public function signout_user() {
         $this->session->unset_userdata('logged_in');
 
-        $data['viewLocation'] = 'authentication/user/signinSuccess';
+        $data['viewLocation'] = 'welcome';
         $data['data'] = $data;
         $this->load->view('layout/index', $data);
     }
-
 }

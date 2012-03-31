@@ -18,7 +18,6 @@ class Welcome extends CI_Controller {
         $this->load->model('itemmodel');
 
         $data = array();
-//       $data['deals'] = $this->deal->deal_get_current();
 
         try {
             $data['vendors'] = $this->vendorModel->get_all_vendors();
@@ -28,6 +27,7 @@ class Welcome extends CI_Controller {
         }
 
         $data['viewLocation'] = 'welcome';
+        $data['pageTitle'] = "Karrrma";
         $data['data'] = $data;
         $this->load->view('layout/index', $data);
     }
